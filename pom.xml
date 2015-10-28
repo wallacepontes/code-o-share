@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Code-O-Share
+
+    Licensed under the Apache License, Version 2.0 (the "License"); you may not 
+    use this file except in compliance with the License. You may obtain a copy 
+    of the License at http://www.apache.org/licenses/LICENSE-2.0 -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <groupId>org.code-o-share</groupId>
+    <artifactId>code-o-share</artifactId>
+
+    <name>Code-O-Share</name>
+    <description>Code-O-Share</description>
+    <url>https://github.com/wallacepontes/code-o-share</url>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <distribution>repo</distribution>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+        </license>
+    </licenses>
+
+    <profiles>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <property>
+                    <name>default</name>
+                    <value>!disabled</value>
+                </property>
+            </activation>
+            <modules>
+                <module>design-patterns</module>
+            </modules>
+        </profile>
+    </profiles>
+
+    <scm>
+        <connection>scm:git://github.com/wallacepontes/code-o-share.git</connection>
+        <developerConnection>scm:git:git@github.com:wallacepontes/code-o-share.git</developerConnection>
+        <url>http://github.com/wallacepontes/code-o-share</url>
+    </scm>
+
+</project>
