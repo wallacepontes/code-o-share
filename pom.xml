@@ -37,6 +37,7 @@
             </activation>
             <modules>
                 <module>design-patterns</module>
+                <module>guestbook</module>
             </modules>
         </profile>
     </profiles>
