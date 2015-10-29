@@ -37,12 +37,10 @@ mvn appengine:devserver
 mvn appengine:update
 mvn help:describe -Dplugin=appengine
 
-
 appengine-skeleton
 ------------------
 
 This is a generated application from the appengine-skeleton archetype.
-
 
 More about
 ------------------
@@ -56,3 +54,17 @@ https://github.com/GoogleCloudPlatform/appengine-java-guestbook-multiphase
 http://stackoverflow.com/questions/tagged/google-app-engine
 
 https://github.com/objectify/objectify
+
+Issues
+------------------
+
+1) Eclipse . Maven2 - problem with pluginManagement and parent-child relationship
+
+a. you need to add the plugin not only in the pluginManagement section, but also in the 
+
+b. This will not work: How to solve “Plugin execution not covered by lifecycle configuration” for Spring Data Maven Builds
+
+See more:
+https://code.google.com/p/appengine-maven-plugin/issues/detail?id=41
+http://stackoverflow.com/questions/1266226/maven2-problem-with-pluginmanagement-and-parent-child-relationship
+http://stackoverflow.com/questions/6352208/how-to-solve-plugin-execution-not-covered-by-lifecycle-configuration-for-sprin
