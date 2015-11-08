@@ -7,9 +7,9 @@ public class FuncionarioPool implements Pool<Funcionario> {
     private List<Funcionario> funcionarios;
 	public FuncionarioPool() {
 		this.funcionarios = new ArrayList<Funcionario>();
-		this.funcionarios.add(new Funcionario("Wallace Pontes"));
-		this.funcionarios.add(new Funcionario("Lucas Pontes"));
-		this.funcionarios.add(new Funcionario("Eliane Mates"));
+		this.funcionarios.add(new Funcionario("Fulano"));
+		this.funcionarios.add(new Funcionario("Sicrano"));
+		this.funcionarios.add(new Funcionario("Beltrano"));
 	}
 
 	public Funcionario acquire() {

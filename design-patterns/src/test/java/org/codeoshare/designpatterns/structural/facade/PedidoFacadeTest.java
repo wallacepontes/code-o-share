@@ -6,22 +6,23 @@ import org.codeoshare.designpatterns.structural.facade.Pedido;
 import org.codeoshare.designpatterns.structural.facade.PedidoFacade;
 import org.codeoshare.designpatterns.structural.facade.PosVenda;
 
-public class TestePedidoFacade {
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+public class PedidoFacadeTest {
+
+	@Test
+	public void testFacade() throws Exception {
 		Estoque estoque = new Estoque();
 		Financeiro financeiro = new Financeiro();
 		PosVenda posVenda = new PosVenda();
 		
 		PedidoFacade facade = new PedidoFacade(estoque, financeiro, posVenda);
 		
-		Pedido pedido = new Pedido("Notebook", "Wallace", "Rua Aroazes");
+		Pedido pedido = new Pedido("Notebook", "Fulano", "Rua Sicrano Beltrano");
 		
 		facade.registraPedido(pedido);
-
+		
+		assertTrue(true);
 	}
-
 }

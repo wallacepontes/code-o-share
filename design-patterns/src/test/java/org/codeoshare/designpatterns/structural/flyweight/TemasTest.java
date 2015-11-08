@@ -4,15 +4,16 @@ import org.codeoshare.designpatterns.structural.flyweight.Apresentacao;
 import org.codeoshare.designpatterns.structural.flyweight.Slide;
 import org.codeoshare.designpatterns.structural.flyweight.TemaFlyweightFactory;
 
-public class TestaTemas {
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+public class TemasTest {
+
+	@Test
+	public void testFlyweight() throws Exception {
 		Apresentacao a = new Apresentacao();
 		a.adicionaSlide(new Slide(TemaFlyweightFactory
-				.getTema(TemaFlyweightFactory.AGILEASY), 
+				.getTema(TemaFlyweightFactory.Code_O_Share), 
 				"OO em Java", "Com este curso vc vai obter uma base."));
 		a.adicionaSlide(new Slide(TemaFlyweightFactory
 				.getTema(TemaFlyweightFactory.ASTERISCO), 
@@ -22,5 +23,7 @@ public class TestaTemas {
 				"Persistencia e Hibernate", "Aprofudamento na persistência."));
 		
 		a.imprime();
+		
+		assertTrue(true);
 	}
 }

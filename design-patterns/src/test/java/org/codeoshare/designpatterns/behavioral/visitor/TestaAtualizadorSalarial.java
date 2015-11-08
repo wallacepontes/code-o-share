@@ -12,7 +12,7 @@ public class TestaAtualizadorSalarial {
 	public static void main(String[] args) {
 		List<Departamento> departamentos = new ArrayList<>();
 		Departamento departamento = new Departamento("Dep.Tecnologia");
-		Gerente gerente = new Gerente("Wallace", 19230, "1234");
+		Gerente gerente = new Gerente("Fulano", 19230, "1234");
 		Telefonista telefonista = new Telefonista("Dione", 1000, 2);
 		departamento.getFuncionarios().add(gerente);
 		departamento.getFuncionarios().add(telefonista);
@@ -20,8 +20,8 @@ public class TestaAtualizadorSalarial {
 		departamentos.add(departamento);
 		
 		Departamento departamento2 = new Departamento("Dep.Pessoal");
-		Gerente gerente2 = new Gerente("Eliane", 5420, "1234");
-		Gerente gerente3 = new Gerente("Ariane", 4830, "1234");
+		Gerente gerente2 = new Gerente("Sicrano", 5420, "1234");
+		Gerente gerente3 = new Gerente("Beltrano", 4830, "1234");
 		Telefonista telefonista2 = new Telefonista("Tati", 1000, 2);
 		departamento2.getFuncionarios().add(gerente2);
 		departamento2.getFuncionarios().add(gerente3);

@@ -10,10 +10,9 @@ public class TestaIterator {
 	public static void main(String[] args) {
 		String[] nomes = new String[4];
 		
-		nomes[0] = "Wallace Pontes";
-		nomes[1] = "Lucas Pontes";
-		nomes[2] = "Bia Mates";
-		nomes[3] = "Michel Mates";
+		nomes[0] = "Fulano";
+		nomes[1] = "Sicrano";
+		nomes[2] = "Beltrano";
 		
 		ListaDeNomes listaDeNomes = new ListaDeNomes(nomes);
 		Iterator<String> iterator = listaDeNomes.iterator();

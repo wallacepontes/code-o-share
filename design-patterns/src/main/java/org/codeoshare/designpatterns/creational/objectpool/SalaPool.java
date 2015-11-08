@@ -1,21 +1,28 @@
 package org.codeoshare.designpatterns.creational.objectpool;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SalaPool implements Pool<Sala> {
 
-	private Collection<Sala> salas;
+	private List<Sala> salas;
 	
 	public SalaPool() {
-		// TODO Auto-generated constructor stub
+		this.salas = new ArrayList<Sala>();
+		this.salas.add(new Sala("F1"));
+		this.salas.add(new Sala("S2"));
+		this.salas.add(new Sala("B3"));
 	}
 
 	public Sala acquire() {
-		// TODO Auto-generated method stub
-		return null;
+		if (this.salas.size() > 0) {
+			return this.salas.remove(0);
+		} else {
+			return null;
+		}
 	}
 
-	public void release(Sala t) {
-		// TODO Auto-generated method stub
+	public void release(Sala sala) {
+		this.salas.add(sala);
 	}
 }

@@ -10,7 +10,7 @@
 
   <groupId>org.codeoshare.designpatterns</groupId>
   <artifactId>design-patterns</artifactId>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <name>design-patterns</name>
 
@@ -37,7 +37,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <version>4.12</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -46,6 +46,17 @@
       <version>1.0.2</version>
       <scope>provided</scope>
     </dependency>
+    <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>3.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+        </dependency>
   </dependencies>
    <build>
         <pluginManagement>
@@ -61,7 +72,16 @@
                         <encoding>UTF-8</encoding>
                     </configuration>
                 </plugin>
-                </plugins>
+                
+                <plugin>
+                  <groupId>org.apache.tomcat.maven</groupId>
+                  <artifactId>tomcat7-maven-plugin</artifactId>
+                  <version>2.1</version>
+                  <configuration>
+                  <path>/</path>
+                  </configuration>
+                </plugin>
+            </plugins>
         </pluginManagement>
     </build>
 </project>

@@ -1,12 +1,12 @@
 package org.codeoshare.designpatterns.creational.factorymethod;
 
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-public class TestaEmissores {
+public class EmissoresTest {
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+	@Test
+	public void testFactoryMethod() throws Exception {
 		
 		EmissorCreator creatorA = new EmissorAssincronoCreator();
 		EmissorCreator creatorS = new EmissorSincronoCreator();
@@ -19,5 +19,7 @@ public class TestaEmissores {
 		//
 		Emissor emissor3 = creatorA.create(EmissorCreator.JMS);
 		emissor3.envia("Msg 3");
+		
+		assertTrue(true);
 	}
 }

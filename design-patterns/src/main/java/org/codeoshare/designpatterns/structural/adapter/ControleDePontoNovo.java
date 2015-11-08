@@ -12,7 +12,7 @@ public class ControleDePontoNovo {
 		if (entrada == true) {
 			System.out.println("Entrada: "+ f.getNome() + " às " + format);
 		} else {
-			System.out.println("Sa�da: "+ f.getNome() + " às " + format);
+			System.out.println("Saída: "+ f.getNome() + " às " + format);
 		}
     }
 }

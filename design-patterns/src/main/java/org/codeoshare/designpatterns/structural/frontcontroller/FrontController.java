@@ -1,5 +1,5 @@
 package org.codeoshare.designpatterns.structural.frontcontroller;
-/*
+
 import java.io.IOException;
 import java.lang.reflect.Method;
 
@@ -9,10 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-*/
-//@WebServlet("*.code-o-share")
-public class FrontController { //extends HttpServlet{
-/*    private static final  long serialVersionUID = 1L;
+
+@WebServlet("*.code-o-share")
+public class FrontController extends HttpServlet{
+    private static final  long serialVersionUID = 1L;
 
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse res)
@@ -26,7 +26,7 @@ public class FrontController { //extends HttpServlet{
 		System.out.println(actionName);
 		
 		try {
-			Class<?> controllerClass = Class.forName("controllers."+ controllerName);
+			Class<?> controllerClass = Class.forName("org.codeoshare.designpatterns.structural.frontcontroller."+ controllerName);
 			Method method = controllerClass.getDeclaredMethod(actionName);
 			
 			Object controller = controllerClass.newInstance();
@@ -40,5 +40,5 @@ public class FrontController { //extends HttpServlet{
 		} catch (Exception e) {
 			e.printStackTrace();
 		}	
-	}*/
+	}
 }

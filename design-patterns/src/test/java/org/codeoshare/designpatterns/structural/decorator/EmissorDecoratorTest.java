@@ -5,13 +5,14 @@ import org.codeoshare.designpatterns.structural.decorator.EmissorBasivo;
 import org.codeoshare.designpatterns.structural.decorator.EmissorDecoratorComCompressao;
 import org.codeoshare.designpatterns.structural.decorator.EmissorDecoratorComCriptografia;
 
-public class TesteEmissorDecorator {
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		String mensagem = "Agileasy";
+public class EmissorDecoratorTest {
+
+	@Test
+	public void testDecorator() throws Exception {
+		String mensagem = "Code-O-Share";
 		
 		Emissor emissorCript = new EmissorDecoratorComCriptografia(new EmissorBasivo());
 		emissorCript.envia(mensagem);
@@ -21,7 +22,7 @@ public class TesteEmissorDecorator {
 		
 		Emissor emissorCriptCompr = new EmissorDecoratorComCriptografia(new EmissorDecoratorComCompressao(new EmissorBasivo()));
 		emissorCriptCompr.envia(mensagem);
-
+		
+		assertTrue(true);
 	}
-
 }
