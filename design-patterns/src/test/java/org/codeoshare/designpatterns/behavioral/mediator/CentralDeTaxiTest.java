@@ -1,7 +1,12 @@
 package org.codeoshare.designpatterns.behavioral.mediator;
 
-public class TestaCentralDeTaxi {
-    public static void main(String[] args) {
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class CentralDeTaxiTest {
+    
+	@Test
+	public void testMediator() throws Exception {
 		CentralDeTaxi central = new CentralDeTaxi();
 		
 		Passageiro p1 = new Passageiro("Fulano", central);
@@ -20,5 +25,7 @@ public class TestaCentralDeTaxi {
 		new Thread(p1).start();
 		new Thread(p2).start();
 		new Thread(p3).start();
+		
+		assertTrue(true);
 	}
 }

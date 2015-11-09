@@ -1,11 +1,12 @@
 package org.codeoshare.designpatterns.behavioral.templatemethod;
 
-public class TestaContas {
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+public class ContasTest {
+
+	@Test
+	public void testTemplateMethod() throws Exception {
 		Conta contaCorrente = new ContaCorrente();
 		Conta contaPoupanca = new ContaPoupanca();
 		
@@ -16,6 +17,8 @@ public class TestaContas {
 		contaPoupanca.saca(10);
 		
 		System.out.println("Saldo da conta corrente: "+ contaCorrente.getSaldo());
+		assertEquals(89.8, contaCorrente.getSaldo(), 1);
 		System.out.println("Saldo da conta poupança: " + contaPoupanca.getSaldo());
+		assertEquals(89.6, contaPoupanca.getSaldo(), 1);
 	}
 }

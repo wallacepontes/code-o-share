@@ -4,6 +4,6 @@ public class ContaPoupanca extends Conta {
 
 	@Override
 	public double calculaTaxa() {
-		return 1;
+		return 0.2;
 	}
 }

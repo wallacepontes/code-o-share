@@ -1,19 +1,19 @@
 package org.codeoshare.designpatterns.behavioral.visitor;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-public class TestaAtualizadorSalarial {
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+public class AtualizadorSalarialTest {
+
+	@Test
+	public void testVisitor() throws Exception {
 		List<Departamento> departamentos = new ArrayList<>();
 		Departamento departamento = new Departamento("Dep.Tecnologia");
 		Gerente gerente = new Gerente("Fulano", 19230, "1234");
-		Telefonista telefonista = new Telefonista("Dione", 1000, 2);
+		Telefonista telefonista = new Telefonista("Emiliano", 1000, 2);
 		departamento.getFuncionarios().add(gerente);
 		departamento.getFuncionarios().add(telefonista);
 		
@@ -22,7 +22,7 @@ public class TestaAtualizadorSalarial {
 		Departamento departamento2 = new Departamento("Dep.Pessoal");
 		Gerente gerente2 = new Gerente("Sicrano", 5420, "1234");
 		Gerente gerente3 = new Gerente("Beltrano", 4830, "1234");
-		Telefonista telefonista2 = new Telefonista("Tati", 1000, 2);
+		Telefonista telefonista2 = new Telefonista("Orlando", 1000, 2);
 		departamento2.getFuncionarios().add(gerente2);
 		departamento2.getFuncionarios().add(gerente3);
 		departamento2.getFuncionarios().add(telefonista2);
@@ -40,5 +40,7 @@ public class TestaAtualizadorSalarial {
 				System.out.println("Nome: " + f.getNome() + " - Salário: " + f.getSalario());
 			}
 		}
+		
+		assertTrue(true);
 	}
 }

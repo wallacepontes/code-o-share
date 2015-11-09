@@ -3,12 +3,13 @@ package org.codeoshare.designpatterns.behavioral.strategy;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TesteSorter {
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+public class SorterTest {
+
+	@Test
+	public void testStrategy() throws Exception {
 		List<Integer> list= new ArrayList<>();
 		list.add(10);
 		list.add(5);
@@ -27,7 +28,7 @@ public class TesteSorter {
 		for (Integer integer : list3) {
 			System.out.println(integer);
 		}
-
+		
+		assertEquals(list2, list3);
 	}
-
 }

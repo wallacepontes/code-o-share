@@ -1,11 +1,12 @@
 package org.codeoshare.designpatterns.behavioral.command;
 
-public class TestaListaDeComandos {
+import static org.junit.Assert.*;
+import org.junit.Test;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+public class ListaDeComandosTest {
+
+	@Test
+	public void testCommand() throws Exception {
 		Player player = new Player();
 		ListaDeComandos lista = new ListaDeComandos();
 		
@@ -16,6 +17,8 @@ public class TestaListaDeComandos {
 		lista.adiciona(new TocaMusicaComando(player, "musica3.mp3"));
 
 		lista.executa();
+		
+		assertTrue(true);
 	}
 
 }

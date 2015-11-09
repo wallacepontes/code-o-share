@@ -4,6 +4,6 @@ public class ContaCorrente extends Conta {
 
 	@Override
 	public double calculaTaxa() {
-		return 3;
+		return 0.1;
 	}
 }
