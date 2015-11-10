@@ -1,22 +1,25 @@
-package org.codeoshare.designpatterns.jdbc;
+package org.codeoshare.jdbc.factory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class ListaLivro {
+import org.codeoshare.jdbc.factory.ConnectionFactory;
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+import static org.junit.Assert.*;
+import org.junit.Test;
+
+public class ListaEditorasTest {
+
+	@Test
+	public void testListaEditoras() throws Exception {
 		
 		try {
 			System.out.println("Abrindo conexão...");
 			Connection conexao = ConnectionFactory.createConnection();
 		
 			//Evitar SQL Injection com sanitize
-			String sql = "SELECT * FROM Livro;";
+			String sql = "SELECT * FROM Editora;";
 			
 			PreparedStatement comando = conexao.prepareStatement(sql);
 						
@@ -25,10 +28,11 @@ public class ListaLivro {
 			
 			System.out.println("Resultados encontrados: \n");
 			while (resultado.next()) {
-				System.out.printf("%d : %s -R$ %s\n", resultado.getInt("id"), resultado.getString("titulo"), resultado.getString("preco"));
+				System.out.printf("%d : %s - %s\n", resultado.getInt("id"), resultado.getString("nome"), resultado.getString("email"));
 				
 			}
 			System.out.println("\nFechando conexão...");
+			assertNotNull(conexao);
 			conexao.close();
 			
 		} catch (Exception e) {

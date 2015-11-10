@@ -1,34 +1,37 @@
-package org.codeoshare.designpatterns.jdbc;
+package org.codeoshare.jdbc.factory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class AlteraLivro {
+import org.codeoshare.jdbc.factory.ConnectionFactory;
+
+public class InsereEditora {
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		Scanner entrada = new Scanner(System.in);
-		
-		System.out.println("Abrindo conexão...");
+
 		try {
+			System.out.println("Abrindo conexão...");
 			Connection conexao = ConnectionFactory.createConnection();
 		
-			System.out.println("Digite o id do livro: ");
-			int id = Integer.parseInt(entrada.nextLine());
-			System.out.println("Digite o novo preço do livro: ");
-			double preco = Double.parseDouble(entrada.nextLine());
+			System.out.println("Digite o nome da editora: ");
+			String nome = entrada.nextLine();
+			
+			System.out.println("Digite o email da editora: ");
+			String email = entrada.nextLine();
 			
 			//Evitar SQL Injection com sanitize
-			String sql = "UPDATE Livro SET preco = ? WHERE ID = ?";
+			String sql = "INSERT INTO Editora(nome, email) VALUES (?, ?)";
 			
 			PreparedStatement comando = conexao.prepareStatement(sql);
 			
-			comando.setDouble(1, preco);
-			comando.setInt(2, id);
+			comando.setString(1, nome);
+			comando.setString(2, email);
 			
 			System.out.println("Executando comando...");
 			comando.execute();
@@ -37,7 +40,10 @@ public class AlteraLivro {
 			
 			
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
 	}
+
 }

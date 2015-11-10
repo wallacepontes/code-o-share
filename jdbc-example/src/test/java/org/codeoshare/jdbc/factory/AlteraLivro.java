@@ -1,11 +1,13 @@
-package org.codeoshare.designpatterns.jdbc;
+package org.codeoshare.jdbc.factory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
 
-public class DeleteLivro {
+import org.codeoshare.jdbc.factory.ConnectionFactory;
+
+public class AlteraLivro {
 
 	/**
 	 * @param args
@@ -17,15 +19,18 @@ public class DeleteLivro {
 		try {
 			Connection conexao = ConnectionFactory.createConnection();
 		
-			System.out.println("Digite o id do livro para exclusão: ");
+			System.out.println("Digite o id do livro: ");
 			int id = Integer.parseInt(entrada.nextLine());
+			System.out.println("Digite o novo preço do livro: ");
+			double preco = Double.parseDouble(entrada.nextLine());
 			
 			//Evitar SQL Injection com sanitize
-			String sql = "DELETE FROM Livro WHERE ID = ?";
+			String sql = "UPDATE Livro SET preco = ? WHERE ID = ?";
 			
 			PreparedStatement comando = conexao.prepareStatement(sql);
 			
-			comando.setInt(1, id);
+			comando.setDouble(1, preco);
+			comando.setInt(2, id);
 			
 			System.out.println("Executando comando...");
 			comando.execute();
@@ -34,7 +39,6 @@ public class DeleteLivro {
 			
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

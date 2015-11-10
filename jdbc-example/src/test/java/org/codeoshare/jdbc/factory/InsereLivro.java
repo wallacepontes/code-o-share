@@ -1,9 +1,11 @@
-package org.codeoshare.designpatterns.jdbc;
+package org.codeoshare.jdbc.factory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
+
+import org.codeoshare.jdbc.factory.ConnectionFactory;
 
 public class InsereLivro {
 

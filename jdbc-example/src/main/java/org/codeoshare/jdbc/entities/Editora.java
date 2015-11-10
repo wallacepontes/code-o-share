@@ -1,4 +1,4 @@
-package org.codeoshare.designpatterns.entities;
+package org.codeoshare.jdbc.entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,6 +31,4 @@ public class Editora {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-    
-    
 }

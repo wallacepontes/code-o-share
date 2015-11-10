@@ -1,9 +1,9 @@
 hibernate-example: Hibernate Example
 ===============================
-Author: Wallace Pontes
-Level: Beginner
-Technologies: Hibernate, JPA, MySql
-Summary: Basic example to using Hibernate and JPA
+Author: Wallace Pontes   
+Level: Beginner   
+Technologies: Hibernate, JPA, MySql   
+Summary: Basic example to using Hibernate and JPA   
 
 What is it?
 -----------
@@ -13,8 +13,8 @@ This example demonstrates the use of Hibernate and JPA
 Before create the database in MySql
 -------------------
 
-mysql > CREATE DATABASE 'hibernateexampledb';
-mysql > source ./model/create-table-produto.sql
+`mysql > CREATE DATABASE hibernateexampledb;`      
+`mysql > source ./model/create-table-produto.sql`   
 
 System requirements
 -------------------

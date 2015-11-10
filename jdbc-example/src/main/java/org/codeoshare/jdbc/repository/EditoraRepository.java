@@ -1,11 +1,11 @@
-package org.codeoshare.designpatterns.ddd.repository;
+package org.codeoshare.jdbc.repository;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
-import org.codeoshare.designpatterns.entities.Editora;
+import org.codeoshare.jdbc.entities.Editora;
 
 public class EditoraRepository {
     private EntityManager manager;

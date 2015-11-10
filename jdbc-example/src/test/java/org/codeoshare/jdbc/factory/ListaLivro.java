@@ -1,10 +1,12 @@
-package org.codeoshare.designpatterns.jdbc;
+package org.codeoshare.jdbc.factory;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class ListaEditoras {
+import org.codeoshare.jdbc.factory.ConnectionFactory;
+
+public class ListaLivro {
 
 	/**
 	 * @param args
@@ -16,7 +18,7 @@ public class ListaEditoras {
 			Connection conexao = ConnectionFactory.createConnection();
 		
 			//Evitar SQL Injection com sanitize
-			String sql = "SELECT * FROM Editora;";
+			String sql = "SELECT * FROM Livro;";
 			
 			PreparedStatement comando = conexao.prepareStatement(sql);
 						
@@ -25,7 +27,7 @@ public class ListaEditoras {
 			
 			System.out.println("Resultados encontrados: \n");
 			while (resultado.next()) {
-				System.out.printf("%d : %s - %s\n", resultado.getInt("id"), resultado.getString("nome"), resultado.getString("email"));
+				System.out.printf("%d : %s -R$ %s\n", resultado.getInt("id"), resultado.getString("titulo"), resultado.getString("preco"));
 				
 			}
 			System.out.println("\nFechando conexão...");

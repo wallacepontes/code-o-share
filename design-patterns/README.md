@@ -1,9 +1,9 @@
 design-patterns: Design Patterns Example
 ===============================
-Author: Wallace Pontes
-Level: Beginner
-Technologies: Servlet
-Summary: Basic example of design patterns that can be used for education
+Author: Wallace Pontes   
+Level: Beginner   
+Technologies: Servlet   
+Summary: Basic example of design patterns that can be used for education   
 
 What is it?
 -----------
@@ -44,8 +44,8 @@ Design Patterns
 6.  flyweight
 7.  frontcontroller
 
-mvn clean install tomcat7:run
-http://localhost:8080/FrontController/Teste/teste.code-o-share
+`mvn clean install tomcat7:run`   
+`http://localhost:8080/FrontController/Teste/teste.code-o-share` 
 
 8.  proxy
 

@@ -5,7 +5,7 @@ Code-O-Share
 Introduction
 ---------------------
 
-Code-O-Share provide simple and working examples that can be used for education
+Code-O-Share provides simple and working examples that can be used for education
 
 Be sure to read this entire document before you attempt to work with the Code-O-Share. It contains the following information:
 
