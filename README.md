@@ -20,7 +20,7 @@ Suggested Approach to the Code-O-Share
 
 We suggest you approach the Code-O-Share as follows:
 
-* Regardless of your level of expertise, we suggest you start with the **helloworld** quickstart. It is the simplest example and is an easy way to prove your server is configured and started correctly.
+* Regardless of your level of expertise, we suggest you start to understand the technologies involved to get how each example was implemented, configured and started correctly.
 
 <a id="systemrequirements"></a>
 System Requirements 
@@ -38,3 +38,8 @@ To run these Code-O-Share with the provided build scripts, you need the followin
     * If you have installed Maven, you can check the version by typing the following in a command line:
 
             mvn --version 
+
+3. Glassfish 4.0
+    * To install Glassfish 4.0 follow the steps at http://glassfish.java.net/download.html
+
+            For example, you can get the zip version and extract into: C:\glassfish4.

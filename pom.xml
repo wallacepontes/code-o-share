@@ -35,5 +35,6 @@
                 <module>gae-guestbook</module>
                 <module>hibernate-example</module>
     <module>jdbc-example</module>
+    <module>glassfish-helloworld</module>
   </modules>
 </project>
