@@ -2,13 +2,13 @@ design-patterns: Design Patterns Example
 ===============================
 Author: Wallace Pontes   
 Level: Beginner   
-Technologies: Servlet   
+Technologies: Servlet, Tomcat
 Summary: Basic example of design patterns that can be used for education   
 
 What is it?
 -----------
 
-This example demonstrates the use of Design Patterns
+This example demonstrates the use of Design Patterns and the FrontController pattern uses the Tomcat as Web Container.
 
 Design Patterns
 -------------------
@@ -48,8 +48,6 @@ Design Patterns
 `http://localhost:8080/FrontController/Teste/teste.code-o-share` 
 
 8.  proxy
-
-
 
 
 System requirements

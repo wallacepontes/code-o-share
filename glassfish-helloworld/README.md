@@ -20,12 +20,10 @@ http://lauraliparulo.altervista.org/glassfish-4-0-hello-world-application-with-m
 
 1. To deploy your application using Maven, create the settings.xml file under the .m2 folder (for example, under Windows at the location: C:\Users\username\.m2), providing the glassfish profile credentials: they will automatically imported in the pom.xml file.
 
-`<?xml version="1.0" encoding="UTF-8"?>`   
-`<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"`    
-`        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"`    
-`          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">`   
-          
-    <profiles>
+```xml
+<?xml version="1.0" encoding="UTF-8"?> 
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+	<profiles>
         <profile>
             <id>glassfish-context</id>
             <properties>
@@ -38,11 +36,11 @@ http://lauraliparulo.altervista.org/glassfish-4-0-hello-world-application-with-m
             </properties>
         </profile>
     </profiles>
- 
     <activeProfiles>
         <activeProfile>glassfish-context</activeProfile>
     </activeProfiles>
 </settings>
+```
 
 Maven commands
 -------------------

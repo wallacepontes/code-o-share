@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Code-O-Share Treinamento</title>
+</h:head>
+<h:body>
+	<div id="header">
+		<h:graphicImage library="images" name="code-o-share.png" />
+		<h1>Code-O-Share - Desenvolvimento Web com JSF2 e JPA2	</h1>
+		<hr />
+	</div>
+	
+	<h:form>
+	<h:commandButton value="Anterior" action="anterior"/>
+	<h:commandButton value="Próximo" action="proximo"/>
+	</h:form>
+	
+	<h:link value="Componentes Visuais" outcome="componentes-visuais" /> - 
+<h:link value="Templates e Modularização"
+		outcome="templates-e-modularizacao" /> - 
+<h:link value="Navegação" outcome="navegacao" />
+
+	<ui:insert name="conteudo"> Espaço para o conteúdo da tela</ui:insert>
+
+	<div id="footer" style="text-align: center">
+		<hr />
+		&copy; 2012 Code-O-Share. Todos os direitos reservados.
+	</div>
+
+</h:body>
+</html>

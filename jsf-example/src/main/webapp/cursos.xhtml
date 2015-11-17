@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Code-O-Share Treinamento</title>
+</h:head>
+<h:body>
+
+<h:outputStylesheet name="code-o-share.css" library="css"/>
+<h:messages globalOnly="true" />
+	<h:form>
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Nome: " for="campo-nome" />
+			<h:inputText value="#{cursosBean.curso.nome}" id="campo-nome" />
+
+			<h:outputLabel value="Sigla: " for="campo-sigla" />
+			<h:inputText value="#{cursosBean.curso.sigla}" id="campo-sigla" />
+
+			<h:commandButton value="Adicionar"
+				action="#{cursosBean.adicionaCurso}" />
+
+		</h:panelGrid>
+	</h:form>
+	
+	<h1>Alguns cursos da Code-O-Share: </h1>
+	<ul>
+	  <ui:repeat var="curso" value="#{cursosBean.cursos}">
+	  <li>
+	  <h:outputText value="#{curso.sigla}: #{curso.nome}" />
+	  </li>
+	  
+	  </ui:repeat>
+	</ul>
+	
+	<ui:remove>
+	<h:dataTable value="#{cursosBean.cursos}" var="curso" rendered="#{not empty cursosBean.cursos}">
+	<f:facet name="header">Lista de Cursos</f:facet>
+	<h:column>
+	<f:facet name="header">Sigla</f:facet>
+	#{curso.sigla}
+	</h:column>
+	<h:column>
+	<f:facet name="header">Nome</f:facet>
+	#{curso.nome}
+	</h:column>
+	</h:dataTable>
+	</ui:remove>
+</h:body>
+</html>

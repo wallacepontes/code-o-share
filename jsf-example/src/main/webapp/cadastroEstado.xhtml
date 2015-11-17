@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head><title>Code-O-Share . Treinamentos</title></h:head>
+
+<h:body>
+<h1>Cadastro de Estados</h1>
+<h:form>
+<h:panelGrid columns="3">
+<h:outputLabel value="Nome: " for="nome"/>
+<h:inputText id="nome" value="#{estadoBean.nome}" required="true" />
+<h:message for="nome"/>
+
+<h:outputLabel value="Estado" for="estado" />
+<h:selectOneMenu 
+    id="estado" 
+    value="#{estadoBean.estado}"
+    valueChangeListener="#{estadoBean.mudaEstado}"
+    onchange="this.form.submit()"
+    required="true" immediate="true">
+    <ui:remove>
+    <f:ajax event="valueChange" execute="@this" listener="#{estadoBean.mudaEstado}" render="@this"/>
+    </ui:remove>
+    <f:selectItem itemLabel="Escolha um estado" noSelectionOption="true"/>
+    <f:selectItems 
+     value="#{estadoBean.estados}"
+     var="estado"
+     itemLabel="#{estado.nome}"
+     itemValue="#{estado.sigla}"/>
+</h:selectOneMenu>
+<h:message for="estado" />
+
+<h:outputLabel value="Cidade: " for="cidade" />
+<h:selectOneMenu id="cidade" value="#{estadoBean.cidade}"  required="true">
+<f:selectItem itemLabel="Escolha uma cidade" noSelectionOption="true"/>
+<f:selectItems value="#{estadoBean.estadoSelecionado.cidades}"/>
+</h:selectOneMenu>
+<h:message for="cidade" />
+</h:panelGrid>
+<h:commandButton value="Cadastrar"/>
+</h:form>
+
+</h:body>
+
+</html>

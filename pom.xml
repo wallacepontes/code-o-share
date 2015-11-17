@@ -36,5 +36,6 @@
                 <module>hibernate-example</module>
     <module>jdbc-example</module>
     <module>glassfish-helloworld</module>
+    <module>jsf-example</module>
   </modules>
 </project>

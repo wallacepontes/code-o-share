@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head><title>Code-O-Share Treinamento</title></h:head>
+
+<h:body>
+<h:form>
+<h:graphicImage value="/resources/images/code-o-share.png" />
+<hr />
+<h:outputFormat value =" {0} amava {1} que amava {2} que amava {3}
+ que amava {4} que amava {5} que não amava ninguém . {0} foi
+ para os Estados Unidos , {1} para o convento , {2} morreu de
+ desastre , {3} ficou para tia , {4} suicidou -se e {5} casou
+ com J. Pinto Fernandes que não tinha entrado na história .">
+ <f:param value =" João "/>
+ <f:param value =" Teresa "/>
+ <f:param value =" Raimundo "/>
+ <f:param value =" Maria "/>
+ <f:param value =" Joaquim "/>
+ <f:param value =" Lili "/>
+ </h:outputFormat>
+<hr />
+<h:commandButton value="Converter" action="#{conversorMonetarioBean.converte}"/>
+<h:inputText value="#{conversorMonetarioBean.valor}"/>
+
+<h:outputLabel value="de " for="de"/>
+<h:selectOneMenu value ="#{conversorMonetarioBean.de}" id="de">
+<f:selectItems 
+    value ="#{conversorMonetarioBean.taxas.keySet()}"
+    var="moeda"
+    itemValue="#{moeda}"
+    itemLabel="#{moeda}" />
+</h:selectOneMenu>
+
+<h:outputLabel value="para" for="para" />
+<h:selectOneMenu value="#{conversorMonetarioBean.para}" id="para">
+<f:selectItems 
+    value ="#{conversorMonetarioBean.taxas.keySet()}"
+    var="moeda"
+    itemValue="#{moeda}"
+    itemLabel="#{moeda}" />
+</h:selectOneMenu>
+</h:form>
+<hr />
+<h:outputFormat value="{0} em {1} equivale a {2} em {3}">
+<f:param value="#{conversorMonetarioBean.valor}" />
+<f:param value="#{conversorMonetarioBean.de}" />
+<f:param value="#{conversorMonetarioBean.resultado}" />
+<f:param value="#{conversorMonetarioBean.para}" />
+
+</h:outputFormat>
+
+</h:body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head><title>Code-O-Share - Treinamentos</title></h:head>
+<h:body>
+<h:form>
+<h:commandButton id="botao-fulano" value="Fulano" disable="false" actionListener="#{botaoBean.sorteiaBotao}"/>
+<h:commandButton id="botao-sicrano" value="Sicrano" disable="true" actionListener="#{botaoBean.sorteiaBotao}"/>
+<h:commandButton id="botao-beltrano" value="Beltrano" disable="false" actionListener="#{botaoBean.sorteiaBotao}"/>
+<h:commandLink value="Enviar">
+   <f:actionListener type="org.codeoshare.jsf.controller.facesevent.MudaCorDaFonte"/>
+</h:commandLink>
+<h:outputLabel value="Preço:" for="preco" />
+<h:inputText id="preco">
+	<f:valueChangeListener type="org.codeoshare.jsf.controller.facesevent.RegistraAlteracao" />
+</h:inputText>
+<h:outputLabel value =" Preço 2:" for ="preco2" />
+<h:inputText valueChangeListener="#{produtoBean.mudaPreco}" id="preco2" />
+</h:form>
+</h:body>
+</html>
