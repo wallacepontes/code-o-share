@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head><title>Code-O-Share - Treinamentos</title></h:head>
+
+<h:body>
+<h:form>
+<h:panelGrid columns="2">
+<h:outputLabel value="Marca: " for="campo-marca" />
+<h:inputText value="#{carBean.car.brand}" id="campo-marca" />
+
+<h:outputLabel value="Modelo: " for="campo-modelo" />
+<h:inputText value="#{carBean.car.model}" id="campo-modelo" />
+
+<h:commandButton value="Adicionar" action="#{carBean.addCar}"/>
+
+</h:panelGrid>
+</h:form>
+
+<h:panelGroup>
+<h1>Lista de carros</h1>
+<ul>
+<ui:repeat var="car" value="#{carBean.cars}">
+<li><h:outputText value="#{car.brand} #{car.model}" /></li>
+</ui:repeat>
+</ul>
+</h:panelGroup>
+</h:body>
+
+</html>
