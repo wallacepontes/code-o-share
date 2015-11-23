@@ -11,8 +11,8 @@ import org.junit.Test;
 public class AddDepartmentAndEmployeeTest {
 	@Test
 	public void testAddDepartmentAndEmployee() throws Exception {
-		EntityManagerFactory factory = 
-				Persistence.createEntityManagerFactory("lojavirtualdb-pu");
+		EntityManagerFactory factory = Persistence
+				.createEntityManagerFactory("cos_jsfintegrationdb-pu");
 		EntityManager manager = factory.createEntityManager();
 		
 		manager.getTransaction().begin();
@@ -24,6 +24,8 @@ public class AddDepartmentAndEmployeeTest {
 		d.setName("Dep Sicrano");
 
 		d.getEmployee().add(e);
+		
+		e.setDepartment(d);
 		
 		manager.persist(e);
 		manager.persist(d);

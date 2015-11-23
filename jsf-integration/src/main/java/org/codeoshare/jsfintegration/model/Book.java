@@ -9,10 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="cos_book")
+@NamedQuery(name="Book.findByMinimumPrice", 
+    query="select b from Book b where b.price > :price")
 public class Book {
 	@Id
 	@GeneratedValue
@@ -21,13 +24,23 @@ public class Book {
 	private String name;
 	
 	@ManyToMany
-	@JoinTable(name="cos_boo_auth",
+	@JoinTable(name="cos_book_author",
 	   joinColumns=@JoinColumn(name="boo_id"),
 	   inverseJoinColumns=@JoinColumn(name="aut_id"))
 	private Collection<Author> authors = new ArrayList<Author>();
+	
+	private Double price;
 
 	public Long getId() {
 		return id;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 
 	public void setId(Long id) {

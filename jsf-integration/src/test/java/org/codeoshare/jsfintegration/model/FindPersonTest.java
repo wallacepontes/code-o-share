@@ -11,7 +11,8 @@ public class FindPersonTest {
 
 	@Test
 	public void testFindPerson() throws Exception {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("lojavirtualdb-pu");
+		EntityManagerFactory factory = Persistence
+				.createEntityManagerFactory("cos_jsfintegrationdb-pu");
 		EntityManager manager = factory.createEntityManager();
 
 		Person p = manager.find(Person.class, 1L);

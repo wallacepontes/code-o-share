@@ -1,8 +1,6 @@
 package org.codeoshare.jsfintegration.model;
 
-import static org.junit.Assert.*;
-
-import java.util.Calendar;
+import static org.junit.Assert.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,8 +12,8 @@ import org.junit.Test;
 public class ConcurrentAccessTest {
 	@Test
 	public void testConcurrentAccess () throws Exception {
-		EntityManagerFactory factory = 
-				Persistence.createEntityManagerFactory("lojavirtualdb-pu");
+		EntityManagerFactory factory = Persistence
+				.createEntityManagerFactory("cos_jsfintegrationdb-pu");
 		EntityManager manager1 = factory.createEntityManager();
 		EntityManager manager2 = factory.createEntityManager();
 		

@@ -20,7 +20,8 @@ public class JPAFilter implements Filter {
 	
 	@Override
 	public void init(FilterConfig filterConfig) throws ServletException {
-		this.factory = Persistence.createEntityManagerFactory("lojavirtualdb-pu");
+		this.factory = Persistence
+				.createEntityManagerFactory("cos_jsfintegrationdb-pu");
 	}
 
 	@Override

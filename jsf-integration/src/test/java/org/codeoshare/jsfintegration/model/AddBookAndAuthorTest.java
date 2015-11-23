@@ -11,8 +11,8 @@ import org.junit.Test;
 public class AddBookAndAuthorTest {
 	@Test
 	public void testAddBookAndAuthor() throws Exception {
-		EntityManagerFactory factory = 
-				Persistence.createEntityManagerFactory("lojavirtualdb-pu");
+		EntityManagerFactory factory = Persistence
+				.createEntityManagerFactory("cos_jsfintegrationdb-pu");
 		EntityManager manager = factory.createEntityManager();
 		
 		manager.getTransaction().begin();

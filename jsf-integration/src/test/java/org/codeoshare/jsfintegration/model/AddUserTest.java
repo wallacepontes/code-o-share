@@ -14,8 +14,8 @@ import org.junit.Test;
 public class AddUserTest {
 	@Test
 	public void testAdicionaUsuario () throws Exception {
-		EntityManagerFactory factory = 
-				Persistence.createEntityManagerFactory("lojavirtualdb-pu");
+		EntityManagerFactory factory = Persistence
+				.createEntityManagerFactory("cos_jsfintegrationdb-pu");
 		EntityManager manager = factory.createEntityManager();
 		
 		manager.getTransaction().begin();

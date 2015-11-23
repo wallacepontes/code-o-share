@@ -7,6 +7,8 @@ import java.util.Collection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -21,6 +23,9 @@ public class Invoice {
 	
 	//TODO: @OneToMany (mappedBy="cos_invoice") not worked
 	@OneToMany
+	@JoinTable(name="cos_invoice_link",
+	  joinColumns=@JoinColumn(name="INV_ID"),
+	  inverseJoinColumns=@JoinColumn(name="LIN_ID"))
 	private Collection<Link> links = new ArrayList<Link>();
 	
 	@Temporal(TemporalType.DATE)

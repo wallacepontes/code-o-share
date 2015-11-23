@@ -4,8 +4,10 @@ import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="cos_city")
 @Cacheable(true)
 public class City {
 	@Id

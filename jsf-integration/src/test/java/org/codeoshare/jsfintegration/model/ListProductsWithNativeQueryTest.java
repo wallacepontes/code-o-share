@@ -2,37 +2,33 @@ package org.codeoshare.jsfintegration.model;
 
 import static org.junit.Assert.*;
 
-import java.util.Calendar;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 import org.junit.Test;
 
 
-public class AddTopicAndCommentTest {
+public class ListProductsWithNativeQueryTest {
 	@Test
-	public void testAddTopicAndComment() throws Exception {
+	public void testListProductsWithNativeQuery () throws Exception {
 		EntityManagerFactory factory = Persistence
 				.createEntityManagerFactory("cos_jsfintegrationdb-pu");
 		EntityManager manager = factory.createEntityManager();
-				
-		Topic t = new Topic();
-		t.setTitle("Orphan Removal");
 		
-		for (int i = 0; i < 10; i++) {
-			Comment c = new Comment();
-			c.setData(Calendar.getInstance());
-			t.getComments().add(c);
+		String sql = "Select * from cos_product";
+		Query nativeQuery = manager.createNativeQuery(sql, Product.class);
+		
+		List<Product> products = nativeQuery.getResultList();
+		
+		for (Product product : products) {
+			System.out.println("Product : " + product.getName());
 		}
-		
-		manager.getTransaction().begin();
 
-		manager.persist(t);
-		
-		manager.getTransaction().commit();
-		
 		manager.close();
 		factory.close();
 		

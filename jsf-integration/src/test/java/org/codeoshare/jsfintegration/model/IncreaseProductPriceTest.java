@@ -1,28 +1,28 @@
 package org.codeoshare.jsfintegration.model;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import org.junit.Test;
 
 
-public class AddCarTest {
+public class IncreaseProductPriceTest {
 	@Test
-	public void testAddCar () throws Exception {
+	public void testIncreaseProductPrice () throws Exception {
 		EntityManagerFactory factory = Persistence
 				.createEntityManagerFactory("cos_jsfintegrationdb-pu");
 		EntityManager manager = factory.createEntityManager();
 		
 		manager.getTransaction().begin();
 		
-		Car car = new Car();
-		car.setBrand("Fiat");
-		car.setModel("Uno");
+		Query query = manager
+				.createQuery("UPDATE Product p SET p.price = p.price * 1.1");
 		
-		manager.persist(car);
+		query.executeUpdate();
 		
 		manager.getTransaction().commit();
 		

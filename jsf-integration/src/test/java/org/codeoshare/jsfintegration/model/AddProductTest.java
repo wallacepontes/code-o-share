@@ -12,14 +12,14 @@ import org.junit.Test;
 public class AddProductTest {
 	@Test
 	public void testAddProduct () throws Exception {
-		EntityManagerFactory factory = 
-				Persistence.createEntityManagerFactory("lojavirtualdb-pu");
+		EntityManagerFactory factory = Persistence
+				.createEntityManagerFactory("cos_jsfintegrationdb-pu");
 		EntityManager manager = factory.createEntityManager();
 		
 		Product p = new Product();
 		p.setName("boat");
-		p.setPrice(4079.99);
-		
+		p.setPrice(489.02);
+
 		manager.getTransaction().begin();
 		
 		manager.persist(p);

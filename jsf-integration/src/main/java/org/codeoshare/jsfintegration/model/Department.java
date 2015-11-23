@@ -21,7 +21,7 @@ public class Department {
 	private String name;
 	
 	@OneToMany
-	@JoinTable(name="cos_dep_empl",
+	@JoinTable(name="cos_department_employee",
 	  joinColumns=@JoinColumn(name="DEP_ID"),
 	  inverseJoinColumns=@JoinColumn(name="EMP_ID"))
 	private Collection<Employee> employee = new ArrayList<Employee>();

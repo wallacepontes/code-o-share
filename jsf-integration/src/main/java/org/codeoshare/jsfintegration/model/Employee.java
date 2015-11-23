@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,10 +23,14 @@ public class Employee {
 	
 	@ElementCollection
 	@CollectionTable(
-			name="cos_Pho_Empl",
+			name="cos_employee_phones",
 			joinColumns=@JoinColumn(name="emp_id"))
 	@Column(name="phone")
 	private Collection<String> phones;
+	
+	@ManyToOne
+	@JoinColumn(name="dep_id")
+	private Department department;
 
 	public Long getId() {
 		return id;
@@ -49,5 +54,13 @@ public class Employee {
 
 	public void setPhones(Collection<String> phones) {
 		this.phones = phones;
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 }

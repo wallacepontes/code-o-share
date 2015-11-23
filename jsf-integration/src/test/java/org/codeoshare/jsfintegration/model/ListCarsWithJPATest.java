@@ -13,7 +13,8 @@ public class ListCarsWithJPATest {
 
 	@Test
 	public void testListCarsWithJPA() throws Exception {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("lojavirtualdb-pu");
+		EntityManagerFactory factory = Persistence
+				.createEntityManagerFactory("cos_jsfintegrationdb-pu");
 		EntityManager manager = factory.createEntityManager();
 
 		CarRepository carRepository = new CarRepository(manager);

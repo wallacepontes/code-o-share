@@ -2,32 +2,30 @@ package org.codeoshare.jsfintegration.model;
 
 import static org.junit.Assert.*;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 import org.junit.Test;
 
-public class AddStateAndGovernorTest {
+public class FetchDepartmentAndEmployeeTest {
 	@Test
-	public void testAdicionaEstadoGovernador() throws Exception {
+	public void testFetchDepartmentAndEmployee() throws Exception {
 		EntityManagerFactory factory = Persistence
 				.createEntityManagerFactory("cos_jsfintegrationdb-pu");
 		EntityManager manager = factory.createEntityManager();
 		
-		manager.getTransaction().begin();
+		Query query = manager
+			.createQuery("select e.name, e.department.name from Employee e");
+		List<Object[]> list = query.getResultList();
 		
-		Governor g = new Governor();
-		g.setName("Fulano Sicrano");
-		
-		State e = new State();
-		e.setName("Rio de Janeiro");
-		e.setGovernador(g);
-		
-		manager.persist(g);
-		manager.persist(e);
-		
-		manager.getTransaction().commit();
+		for (Object[] o : list) {
+			System.out.println("Employee: " + o[0]);
+			System.out.println("Department: "+ o[1]);
+		}
 		
 		manager.close();
 		factory.close();

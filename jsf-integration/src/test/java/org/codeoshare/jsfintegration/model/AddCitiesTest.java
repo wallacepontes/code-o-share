@@ -1,8 +1,6 @@
 package org.codeoshare.jsfintegration.model;
 
-import static org.junit.Assert.*;
-
-import java.util.Calendar;
+import static org.junit.Assert.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,8 +12,8 @@ import org.junit.Test;
 public class AddCitiesTest {
 	@Test
 	public void testAddCities () throws Exception {
-		EntityManagerFactory factory = 
-				Persistence.createEntityManagerFactory("lojavirtualdb-pu");
+		EntityManagerFactory factory = Persistence
+				.createEntityManagerFactory("cos_jsfintegrationdb-pu");
 		EntityManager manager = factory.createEntityManager();
 		
 		manager.getTransaction().begin();

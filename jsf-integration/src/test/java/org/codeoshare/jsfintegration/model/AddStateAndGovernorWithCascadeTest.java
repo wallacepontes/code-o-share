@@ -11,8 +11,8 @@ import org.junit.Test;
 public class AddStateAndGovernorWithCascadeTest {
 	@Test
 	public void testAdicionaEstadoGovernadorWithCascade() throws Exception {
-		EntityManagerFactory factory = 
-				Persistence.createEntityManagerFactory("lojavirtualdb-pu");
+		EntityManagerFactory factory = Persistence
+				.createEntityManagerFactory("cos_jsfintegrationdb-pu");
 		EntityManager manager = factory.createEntityManager();
 		
 		Governor g = new Governor();
