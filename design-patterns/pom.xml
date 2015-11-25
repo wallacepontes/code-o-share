@@ -1,87 +1,28 @@
-<?xml version="1.0"?>
-<!-- Code-O-Share
-
-    Licensed under the Apache License, Version 2.0 (the "License"); you may not 
-    use this file except in compliance with the License. You may obtain a copy 
-    of the License at http://www.apache.org/licenses/LICENSE-2.0 -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Design-Patterns Examples
+  ~ 
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later
+-->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.codeoshare.designpatterns</groupId>
-  <artifactId>design-patterns</artifactId>
-  <packaging>war</packaging>
-  <version>1.0-SNAPSHOT</version>
-  <name>design-patterns</name>
+    <parent>
+        <groupId>org.code-o-share</groupId>
+        <artifactId>code-o-share</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
-  <url>http://maven.apache.org</url>
-  
-  <licenses>
-      <license>
-         <name>Apache License, Version 2.0</name>
-         <distribution>repo</distribution>
-         <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
-      </license>
-   </licenses>
+    <groupId>org.codeoshare.designpatterns</groupId>
+    <artifactId>design-patterns</artifactId>
+    <packaging>war</packaging>
 
-   <properties>
-      <!-- Explicitly declaring the source encoding eliminates the following
-         message: -->
-      <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered
-         resources, i.e. build is platform dependent! -->
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-   </properties>
+    <name>design-patterns</name>
+    <description>Design Patterns Examples</description>
+    <url>http://maven.apache.org</url>
   
-  
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>javax.persistence</groupId>
-      <artifactId>persistence-api</artifactId>
-      <version>1.0.2</version>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>jstl</groupId>
-            <artifactId>jstl</artifactId>
-            <version>1.2</version>
-        </dependency>
-  </dependencies>
-   <build>
-        <pluginManagement>
-            <plugins>
-                <!-- Compiler plugin enforces Java 1.6 compatibility and 
-                    activates annotation processors -->
-                <plugin>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <version>2.3.2</version>
-                    <configuration>
-                        <source>1.7</source>
-                        <target>1.7</target>
-                        <encoding>UTF-8</encoding>
-                    </configuration>
-                </plugin>
-                
-                <plugin>
-                  <groupId>org.apache.tomcat.maven</groupId>
-                  <artifactId>tomcat7-maven-plugin</artifactId>
-                  <version>2.1</version>
-                  <configuration>
-                  <path>/</path>
-                  </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
+    <build>
+        <finalName>design-patterns</finalName>
     </build>
 </project>

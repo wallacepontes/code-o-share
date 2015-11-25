@@ -1,101 +1,28 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Glassfish Hello World Examples
+  ~ 
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later
+-->
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.code-o-share</groupId>
-    <artifactId>code-o-share</artifactId>
-    <version>1.0-SNAPSHOT</version>
-  </parent>
-  <groupId>org.codeoshare.helloworld</groupId>
-  <artifactId>glassfish-helloworld</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <packaging>war</packaging>
-  <name>glassfish-helloworld Maven Webapp</name>
-  <url>http://maven.apache.org</url>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
-            <scope>provided</scope>
-    </dependency>
-  </dependencies>
-  <build>
-    <finalName>glassfish-helloworld</finalName>
-    <plugins>
-    
-    <!--
-      <plugin>
-        <groupId>org.glassfish</groupId>
-        <artifactId>maven-embedded-glassfish-plugin</artifactId>
-        <version>3.0</version>
-        <configuration>
-          <goalPrefix>glassfish</goalPrefix>
-          <app>target/glassfish-helloworld.war</app>
-          <port>8080</port>
-          <contextRoot>glassfish-helloworld</contextRoot>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-             <goal>run</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-    -->
-	 <plugin>
-		<groupId>org.apache.maven.plugins</groupId>
-		<artifactId>maven-compiler-plugin</artifactId>
-		<version>3.1</version>
-		<configuration>
-			<source>1.7</source>
-			<target>1.7</target>
-		</configuration>
-	</plugin>
+    <modelVersion>4.0.0</modelVersion>
 
-	<plugin>
-		<groupId>org.apache.maven.plugins</groupId>
-		<artifactId>maven-war-plugin</artifactId>
-		<version>2.1.1</version>
-		<configuration>
-			<failOnMissingWebXml>false</failOnMissingWebXml>
-			<!-- <webXml>src\main\webapp\WEB-INF\web.xml</webXml> -->
-		</configuration>
-	</plugin>
+    <parent>
+        <groupId>org.code-o-share</groupId>
+        <artifactId>code-o-share</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
 
-	<plugin>
-		<groupId>org.glassfish.maven.plugin</groupId>
-		<artifactId>maven-glassfish-plugin</artifactId>
-		<version>2.1</version>
-		<configuration>
-		<glassfishDirectory>${local.glassfish.home}</glassfishDirectory>
-			<user>admin</user>
-			<passwordFile>${local.glassfish.passfile}</passwordFile>
-			<domain>
-				<name>domain1</name>
-				<httpPort>8080</httpPort>
-				<adminPort>4848</adminPort>
-			</domain>
-			<components>
-				<component>
-					<name>${project.artifactId}</name>
-			<artifact>target/${project.build.finalName}.war</artifact>
-				</component>
-			</components>
-			<debug>true</debug>
-			<terse>false</terse>
-			<echo>true</echo>
-		</configuration>
-	</plugin>
-    </plugins>
-  </build>
+    <groupId>org.codeoshare.helloworld</groupId>
+    <artifactId>glassfish-helloworld</artifactId>
+    <packaging>war</packaging>
+
+    <name>glassfish-helloworld Maven Webapp</name>
+    <description>Glassfish Hello World Example</description>
+    <url>http://maven.apache.org</url>
+
+    <build>
+        <finalName>glassfish-helloworld</finalName>    
+    </build>
 </project>
