@@ -79,6 +79,8 @@
 
         <!-- ORM and transitive deps; Make sure to match ORM's set of versions when updating -->
         <hibernateVersion>5.0.4.Final</hibernateVersion>
+        <hibernate.search.version>5.5.0.Final</hibernate.search.version>
+        
         <jbossLoggingVersion>3.3.0.Final</jbossLoggingVersion>
         
         <!-- character encoding -->
@@ -97,6 +99,44 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
             <version>${hibernateVersion}</version>
+        </dependency>
+        <dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-envers</artifactId>
+	    <version>${hibernateVersion}</version>
+	</dependency>
+        <dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-search-orm</artifactId>
+		<version>${hibernate.search.version}</version>
+		<exclusions>
+		    <exclusion>
+			<groupId>org.hibernate</groupId>
+	                <artifactId>hibernate-core</artifactId>
+		    </exclusion>
+                </exclusions>
+	</dependency>
+        <dependency>
+	    <groupId>org.hibernate</groupId>
+	    <artifactId>hibernate-ehcache</artifactId>
+	    <version>${hibernateVersion}</version>
+	    <exclusions>
+		<exclusion>
+			<groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+		</exclusion>
+            </exclusions>
+	</dependency>
+	<dependency>
+		<groupId>net.sf.ehcache</groupId>
+		<artifactId>ehcache-core</artifactId>
+		<version>2.4.3</version>
+		<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+		            <artifactId>slf4j-api</artifactId>
+				</exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>com.sun.faces</groupId>

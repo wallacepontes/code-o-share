@@ -14,9 +14,8 @@ public class Governor {
 	private Long id;
 	
 	private String name;
-	
-	//TODO: @OneToOne(mappedBy="governador") not worked
-	@OneToOne
+
+	@OneToOne(mappedBy="governador")
 	private State state;
 
 	public Long getId() {

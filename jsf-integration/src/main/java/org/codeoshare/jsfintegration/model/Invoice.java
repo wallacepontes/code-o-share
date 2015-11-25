@@ -20,12 +20,8 @@ public class Invoice {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
-	//TODO: @OneToMany (mappedBy="cos_invoice") not worked
-	@OneToMany
-	@JoinTable(name="cos_invoice_link",
-	  joinColumns=@JoinColumn(name="INV_ID"),
-	  inverseJoinColumns=@JoinColumn(name="LIN_ID"))
+
+	@OneToMany(mappedBy="invoice")
 	private Collection<Link> links = new ArrayList<Link>();
 	
 	@Temporal(TemporalType.DATE)

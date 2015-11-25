@@ -16,7 +16,13 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.hibernate.envers.Audited;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
 @Entity
+@Indexed
+@Audited
 @Table(name="cos_person")
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class Person {
@@ -27,6 +33,10 @@ public class Person {
 	private String firstName;
 
 	private String lastName;
+	
+	@Lob
+	@Field
+	private String biography;
 	
 	@Column(precision=3,scale=2)
 	private BigDecimal altura;
@@ -105,5 +115,13 @@ public class Person {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public String getBiography() {
+		return biography;
+	}
+
+	public void setBiography(String biography) {
+		this.biography = biography;
 	}
 }

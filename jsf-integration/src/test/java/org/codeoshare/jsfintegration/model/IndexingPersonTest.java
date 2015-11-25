@@ -1,38 +1,27 @@
 package org.codeoshare.jsfintegration.model;
 
-import static org.junit.Assert.*;
-
-import java.util.Calendar;
+import static org.junit.Assert.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.hibernate.search.jpa.FullTextEntityManager;
+import org.hibernate.search.jpa.Search;
 import org.junit.Test;
 
 
-public class AddTopicAndCommentTest {
+public class IndexingPersonTest {
 	@Test
-	public void testAddTopicAndComment() throws Exception {
+	public void testIndexingPerson () throws Exception {
 		EntityManagerFactory factory = Persistence
 				.createEntityManagerFactory("cos_jsfintegrationdb-pu");
 		EntityManager manager = factory.createEntityManager();
-				
-		Topic t = new Topic();
-		t.setTitle("Orphan Removal");
-		
-		for (int i = 0; i < 10; i++) {
-			Comment c = new Comment();
-			c.setData(Calendar.getInstance());
-			c.setTopic(t);
-			t.getComments().add(c);
-		}
 		
 		manager.getTransaction().begin();
-
-		manager.persist(t);
 		
-		manager.getTransaction().commit();
+		FullTextEntityManager ft = Search.getFullTextEntityManager(manager);
+		ft.createIndexer().startAndWait();
 		
 		manager.close();
 		factory.close();

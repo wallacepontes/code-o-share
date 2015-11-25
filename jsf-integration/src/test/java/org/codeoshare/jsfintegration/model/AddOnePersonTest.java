@@ -1,8 +1,6 @@
 package org.codeoshare.jsfintegration.model;
 
-import static org.junit.Assert.*;
-
-import java.util.Calendar;
+import static org.junit.Assert.assertTrue;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -11,26 +9,20 @@ import javax.persistence.Persistence;
 import org.junit.Test;
 
 
-public class AddTopicAndCommentTest {
+public class AddOnePersonTest {
 	@Test
-	public void testAddTopicAndComment() throws Exception {
+	public void testAddOnePerson () throws Exception {
 		EntityManagerFactory factory = Persistence
 				.createEntityManagerFactory("cos_jsfintegrationdb-pu");
 		EntityManager manager = factory.createEntityManager();
-				
-		Topic t = new Topic();
-		t.setTitle("Orphan Removal");
-		
-		for (int i = 0; i < 10; i++) {
-			Comment c = new Comment();
-			c.setData(Calendar.getInstance());
-			c.setTopic(t);
-			t.getComments().add(c);
-		}
 		
 		manager.getTransaction().begin();
-
-		manager.persist(t);
+		
+		Person p = new Person();
+		p.setFirstName("Sicrano");
+		p.setLastName("Beltrano");
+		
+		manager.persist(p);
 		
 		manager.getTransaction().commit();
 		

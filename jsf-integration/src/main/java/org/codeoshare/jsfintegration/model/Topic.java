@@ -7,8 +7,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -21,10 +19,7 @@ public class Topic {
 	
 	//orphanRemoval=true to use topico.getComentarios().clear();
 	//CascadeType.REMOVE
-	@OneToMany(cascade={CascadeType.PERSIST}, orphanRemoval=true)
-	@JoinTable(name="cos_topic_comment",
-	  joinColumns=@JoinColumn(name="TOP_ID"),
-	  inverseJoinColumns=@JoinColumn(name="COM_ID"))
+	@OneToMany(mappedBy="topic", cascade={CascadeType.PERSIST}, orphanRemoval=true)
 	private List<Comment> comments = new ArrayList<Comment>();
 	
 	private String Title;

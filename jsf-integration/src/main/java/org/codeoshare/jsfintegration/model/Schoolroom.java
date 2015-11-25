@@ -8,14 +8,12 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cos_class")
-public class Class {
+@Table(name="cos_schoolroom")
+public class Schoolroom {
 	@Id
 	@GeneratedValue
 	private Long id;
 
 	@Enumerated(EnumType.STRING)
 	private PeriodType periodType;
-	
-
 }
