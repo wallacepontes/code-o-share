@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.envers.Audited;
 import org.hibernate.search.annotations.Field;
@@ -30,8 +31,10 @@ public class Person {
 	@GeneratedValue
 	private Long id;
 	
+	@NotNull
 	private String firstName;
 
+	@NotNull
 	private String lastName;
 	
 	@Lob

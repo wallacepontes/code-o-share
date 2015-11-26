@@ -1,31 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 
-<?xml version="1.0" encoding="UTF-8"?>
-<persistence version="2.1" 
-  xmlns="http://java.sun.com/xml/ns/persistence"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://www.oracle.com/webfolder/technetwork/jsc/xml/ns/persistence/persistence_2_1.xsd">
- <persistence-unit name="cosPool" transaction-type="JTA">
-  <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-  <jta-data-source>jdbc/cosPool</jta-data-source>
-  <properties>
-   <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.SunOneJtaPlatform" />
-   <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
-   <property name="hibernate.hbm2ddl.auto" value="update"/>
-   <property name="hibernate.show_sql" value="true"/>
-   <property name="hibernate.format_sql" value="true"/>
-  </properties> 
- </persistence-unit> 
-</persistence>
--->
-
-<!-- 
-<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
-             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
-             version="2.1"> 
- -->
 <persistence version="2.0" 
   xmlns="http://java.sun.com/xml/ns/persistence"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -55,7 +28,9 @@
           value="filesystem"/>
    <property name="hibernate.search.default.indexBase"
           value="/var/lucene/indexes"/>
-
+   <!-- Bean Validation  -->
+   <property name="javax.persistence.validation.group.pre-persist" 
+          value="javax.validation.groups.Default"/>
   </properties> 
  </persistence-unit> 
 </persistence>
