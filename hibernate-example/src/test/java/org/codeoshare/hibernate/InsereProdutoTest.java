@@ -18,7 +18,7 @@ public class InsereProdutoTest {
 	@Test
 	public void testInsereProduto() throws Exception {
 
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("hibernateexampleDB-pu");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("cos_hibernateexampleDB-pu");
         EntityManager em = factory.createEntityManager();
 
         Produto p = new Produto();
@@ -47,7 +47,7 @@ public class InsereProdutoTest {
 
         em.close();
         factory.close();
-        
+
         assertTrue(true);
 	}
 }

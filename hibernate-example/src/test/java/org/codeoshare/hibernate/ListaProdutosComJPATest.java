@@ -16,7 +16,7 @@ public class ListaProdutosComJPATest {
 
 	@Test
 	public void testListaProdutosComJPA() throws Exception {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("hibernateexampleDB-pu");
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("cos_hibernateexampleDB-pu");
 		EntityManager manager = factory.createEntityManager();
 
 		ProdutoRepository produtoRepository = new ProdutoRepository(manager);
@@ -28,7 +28,7 @@ public class ListaProdutosComJPATest {
 
 		manager.close();
 		factory.close();
-		
+
 		assertNotNull(produtos);
 	}
 }

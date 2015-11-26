@@ -1,4 +1,4 @@
-USE hibernateexampleDB;
+USE cos_hibernateexampleDB;
 CREATE TABLE Produto (
     id BIGINT NOT NULL AUTO_INCREMENT ,
     nome VARCHAR (255) NOT NULL ,

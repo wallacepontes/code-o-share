@@ -16,7 +16,7 @@ public class InsereProdutoComJPATest {
 
 	@Test
 	public void testInsereProdutoComJPA() throws Exception {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("hibernateexampleDB-pu");
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("cos_hibernateexampleDB-pu");
 		EntityManager manager = factory.createEntityManager();
 
 		ProdutoRepository produtoRepository = new ProdutoRepository(manager);
@@ -38,7 +38,7 @@ public class InsereProdutoComJPATest {
 
 		manager.close();
 		factory.close();
-		
+
 		assertTrue(true);
 	}
 }

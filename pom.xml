@@ -27,6 +27,7 @@
         <module>jsf-example</module>
         <module>jsf-integration</module>
     <module>primefaces-example</module>
+    <module>futebol</module>
   </modules>
 
     <scm>

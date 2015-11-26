@@ -13,7 +13,7 @@ This example demonstrates the use of Hibernate and JPA
 Before create the database in MySql
 -------------------
 
-`mysql > CREATE DATABASE hibernateexampledb;`      
+`mysql > CREATE DATABASE cos_hibernateexampledb;`      
 `mysql > source ./model/create-table-produto.sql`   
 
 System requirements
