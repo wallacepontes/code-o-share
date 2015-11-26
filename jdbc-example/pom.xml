@@ -21,7 +21,15 @@
     <name>jdbc-example</name>
     <description>JDBC Example</description>
     <url>http://maven.apache.org</url>
-
+    
+    <dependencies>  
+          <dependency>
+              <groupId>org.hibernate</groupId>
+  	    <artifactId>hibernate-core</artifactId>
+  	    <version>${hibernateVersion}</version>
+          </dependency>
+    </dependencies>  
+    
     <build>
         <finalName>jdbc-example</finalName>
     </build>  

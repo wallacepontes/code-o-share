@@ -21,7 +21,13 @@
     <name>hibernate-example</name>
     <description>Hibernate Example</description>
     <url>http://maven.apache.org</url>
-
+    <dependencies>  
+          <dependency>
+              <groupId>org.hibernate</groupId>
+  	    <artifactId>hibernate-core</artifactId>
+  	    <version>${hibernateVersion}</version>
+          </dependency>
+    </dependencies>  
     <build>
         <finalName>hibernate-example</finalName>
     </build>  
