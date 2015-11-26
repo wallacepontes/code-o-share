@@ -13,7 +13,7 @@ This example demonstrates the use of JDBC and JPA/Hibernate
 Before create the database in MySql
 -------------------
 
-`mysql > CREATE DATABASE livrariadb;`    
+`mysql > CREATE DATABASE cos_jdbcexampledb;`    
 `mysql > source ./model/create-table-editora.sql`   
 `mysql > source ./model/create-table-livro.sql`  
 

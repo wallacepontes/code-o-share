@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
 	public static Connection createConnection() {
-		String stringDeConexao = "jdbc:mysql://localhost:3306/livrariadb";
+		String stringDeConexao = "jdbc:mysql://localhost:3306/cos_jdbcexampledb";
 		String usuario = "root";
 		String senha = "root";
 		//Scanner entrada = new Scanner(System.in);
@@ -15,13 +15,13 @@ public class ConnectionFactory {
 		//senha = entrada.nextLine();
 
 		Connection conexao = null;
-		
+
 		try {
 			conexao = DriverManager.getConnection(stringDeConexao, usuario, senha);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return conexao;
 	}
 

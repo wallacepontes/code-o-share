@@ -16,7 +16,7 @@ public class InsereEditoraComJPATest {
 
 	@Test
 	public void testInsereEditoraComJPA() throws Exception {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("livrariadb-pu");
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("cos_jdbcexampledb-pu");
 		EntityManager manager = factory.createEntityManager();
 
 		EditoraRepository editoraRepository = new EditoraRepository(manager);
@@ -38,7 +38,7 @@ public class InsereEditoraComJPATest {
 
 		manager.close();
 		factory.close();
-		
+
 		assertTrue(true);
 	}
 }

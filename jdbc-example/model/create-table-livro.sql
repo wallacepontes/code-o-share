@@ -1,4 +1,4 @@
-USE livrariadb ;
+USE cos_jdbcexampledb ;
 CREATE TABLE Livro (
     id BIGINT NOT NULL AUTO_INCREMENT ,
     titulo VARCHAR (255) NOT NULL ,
