@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Calculator-Web
+  ~ 
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later
+-->
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.codeoshare.calculator-ear</groupId>
+        <artifactId>calculator-ear-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>calculator-war</artifactId>
+    <packaging>war</packaging>
+
+    <name>Code-O-Share: Calculator Ear: WAR</name>
+
+    <dependencies>
+        <!-- EJB JAR. 
+        <dependency>
+            <groupId>org.codeoshare.calculator-ear</groupId>
+            <artifactId>calculator-ejb</artifactId>
+            <type>ejb</type>
+            <version>1.0-SNAPSHOT</version> 
+            <scope>provided</scope>
+        </dependency>
+        -->
+
+        <!-- EJB Client JAR. -->
+        <dependency>
+            <groupId>org.codeoshare.calculator-ear</groupId>
+            <artifactId>calculator-ejb</artifactId>
+            <type>ejb-client</type>
+            <version>1.0-SNAPSHOT</version> 
+         </dependency>
+         
+   </dependencies>
+</project>

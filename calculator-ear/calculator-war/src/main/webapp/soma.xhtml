@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head><title>Calculadora - SOMA SUBTRAI MULTIPLICA DIVIDE</title></h:head>
+
+<h:body>
+
+<h:form>
+
+<h:outputLabel value="Valor A: " for="campo-a" />
+<h:inputText value="#{calculadoraMB.a}" id="campo-a"/>
+
+<h:outputLabel value="Valor B: " for="campo-b" />
+<h:inputText value="#{calculadoraMB.b}" id="campo-b"/>
+
+<h:commandButton action="#{calculadoraMB.soma}" value="soma" />
+<h:commandButton action="#{calculadoraMB.subtrai}" value="subtrai" />
+<h:commandButton action="#{calculadoraMB.multiplica}" value="multiplica" />
+<h:commandButton action="#{calculadoraMB.divide}" value="divide" />
+
+<h:outputLabel value="Resultado : " />
+<h:inputText value="#{calculadoraMB.resultado}"/>
+
+
+</h:form>
+
+</h:body>
+
+</html>
