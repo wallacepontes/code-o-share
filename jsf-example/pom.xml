@@ -14,13 +14,13 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.codeoshare.jsf</groupId>
     <artifactId>jsf-example</artifactId>
     <packaging>war</packaging>
 
-    <name>jsf-example</name>
+    <name>Code-O-Share: JSF Example</name>
     <description>JSF Example</description>
-    <url>http://maven.apache.org</url>
+    <url>http://www.codeoshare.org</url>
+
     <dependencies>
 	<!-- Javax Validation -->
         <dependency>
@@ -42,7 +42,6 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>jsf-example</finalName>
       <defaultGoal>install</defaultGoal>
        <plugins>
             <plugin>

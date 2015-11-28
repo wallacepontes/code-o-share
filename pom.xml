@@ -29,6 +29,7 @@
     <module>primefaces-example</module>
     <module>futebol</module>
     <module>calculator-ear</module>
+    <module>dado</module>
   </modules>
 
     <scm>

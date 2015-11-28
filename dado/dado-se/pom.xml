@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Dado SE
+  ~ 
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later
+-->
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.codeoshare.dado</groupId>
+        <artifactId>dado-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>dado-se</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Code-O-Share: Dado SE</name>
+    <description>This example demonstrates a lookup of a remote EJB</description>
+    <url>http://www.codeoshare.org</url>
+    
+    <dependencies>  
+          <!-- Dado War. -->
+         <dependency>
+         	<groupId>org.codeoshare.dado</groupId>
+         	<artifactId>dado-war</artifactId>
+         	<version>1.0-SNAPSHOT</version>
+         	<classifier>classes</classifier>
+         </dependency>
+
+         <!-- Glassfish Client Module 
+mvn install:install-file -Dfile=C:\glassfish4\glassfish\modules\gf-client-module.jar -DgroupId=org.glassfish -DartifactId=gf-client-module -Dversion=4.1.1 -Dpackaging=jar
+         -->
+	 <dependency>
+	 	 	<groupId>org.glassfish</groupId>
+	 	 	<artifactId>gf-client-module</artifactId>
+	 	 	<version>4.1.1</version>
+	 </dependency>
+         
+    </dependencies>  
+    
+</project>

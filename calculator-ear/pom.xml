@@ -19,7 +19,7 @@
    <version>1.0-SNAPSHOT</version>
    <packaging>pom</packaging>
 
-   <name>calculator</name>
+   <name>Code-O-Share: Calculator parent</name>
    <description>
         A sample JAVA EE project demonstrating how to use EAR with EJB JAR and WAR version.
    </description>
@@ -32,7 +32,7 @@
 
    <dependencyManagement>
       <dependencies>
-            <!-- EJB JAR module. -->
+            <!-- WAR module. -->
          <dependency>
             <groupId>org.codeoshare.calculator-ear</groupId>
             <artifactId>calculator-war</artifactId>
@@ -40,7 +40,7 @@
             <type>war</type>
          </dependency>
 
-            <!-- WAR module. -->
+            <!-- EJB JAR module. -->
          <dependency>
             <groupId>org.codeoshare.calculator-ear</groupId>
             <artifactId>calculator-ejb</artifactId>

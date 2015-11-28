@@ -14,14 +14,12 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <groupId>org.codeoshare.futebol</groupId>
   <artifactId>futebol</artifactId>
-  <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>futebol</name>
+  <name>Code-O-Share: Futebol: Time e Jogadores</name>
   <description>Controle de partidas de futebol</description>
-  <url>http://maven.apache.org</url>
+  <url>http://www.codeoshare.org</url>
 
     <dependencies>
 	<!-- JavaServer Faces -->
@@ -54,7 +52,6 @@
     </dependencies>
 
   <build>
-      <finalName>futebol</finalName>
       <defaultGoal>install</defaultGoal>
        <plugins>
             <plugin>
