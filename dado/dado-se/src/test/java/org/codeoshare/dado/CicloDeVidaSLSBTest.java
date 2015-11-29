@@ -2,15 +2,27 @@ package org.codeoshare.dado;
 
 import javax.naming.InitialContext;
 
+import static org.junit.Assert.*;
+import org.junit.Test;
+
 import org.codeoshare.dado.sessionbeans.LancadorDeDado;
 
 public class CicloDeVidaSLSBTest {
-
 	/**
-	 * @param args
+	 * Invoke GlassFish management console : 
+	 *         http://localhost:4848/common/index.jsf
+	 * 
+	 * --> Configurations -> server-config -> EJB Container
+	 * Change the values:
+	 *   - Maximum Pool Size: 32 to 5
+	 *   - Pool Idle Timeout: 600 to 10
+	 * 
+	 * Restart the server, and test again.
+	 *  
 	 * @throws Exception
 	 */
-	public static void main(String[] args) throws Exception {
+	@Test
+	public void testCicloDeVidaSLSB() throws Exception {
 		InitialContext ic = new InitialContext();
 
 		for (int i = 0; i < 100; i++) {
@@ -34,6 +46,8 @@ public class CicloDeVidaSLSBTest {
 			});
 			thread.start();
 		}
+		
+		assertTrue(true);
 
 	}
 

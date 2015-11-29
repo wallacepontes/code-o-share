@@ -123,7 +123,7 @@
     </dependencies>
 
     <build>
-        <finalName>jsf-integration</finalName>
+      <!--  <finalName>jsf-integration</finalName>-->  
       <defaultGoal>install</defaultGoal>
        <plugins>
 	    <plugin>

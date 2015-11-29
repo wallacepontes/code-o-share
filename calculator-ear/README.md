@@ -21,7 +21,7 @@ This is an EAR version, with the following structure:
 
     -`calculator-ear - parent module
         - `calculator-ejb`: Contains EJB beans and JPA entities. Creates a `.jar` file
-        - `calculator-war`: Contains the Wicket web application, which uses the EJB beans. Creates a `.war` file
+        - `calculator-war`: Contains the web application, which uses the EJB beans. Creates a `.war` file
         - `calculator-ear`: Packages the EJB JAR and WAR into an EAR. Creates an `.ear` file
 
 

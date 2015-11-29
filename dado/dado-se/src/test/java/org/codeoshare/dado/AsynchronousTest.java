@@ -5,11 +5,15 @@ import java.util.concurrent.Future;
 
 import javax.naming.InitialContext;
 
+import static org.junit.Assert.*;
+import org.junit.Test;
+
 import org.codeoshare.dado.sessionbeans.LancadorDeDado;
 
 public class AsynchronousTest {
 
-	public static void main(String[] args) throws Exception {
+	@Test
+	public void testAsynchronous() throws Exception {
 		InitialContext ic = new InitialContext();
 
 		LancadorDeDado lancadorDeDado = (LancadorDeDado) ic
@@ -24,5 +28,7 @@ public class AsynchronousTest {
 			Thread.sleep(1000);
 		}
 		System.out.println("\n" + future.get());
+		
+		assertTrue(true);
 	}
 }

@@ -36,13 +36,13 @@ See more at: https://docs.oracle.com/javaee/6/tutorial/doc/bnaqq.html
 
 Goals Overview
 ---------------
-glassfish:create-domain Create a new Glassfish domain. (Creating an existing domain will cause it to be deleted and recreated.)
-glassfish:start-domain Start an existing Glassfish domain. (Starting a non-existent domain will cause it to be created.)
-glassfish:deploy Deploy JavaEE artifacts to a running domain. (Deploying to an inactive domain will cause it to be started and created if necessary.)
-glassfish:redeploy Redeploy JavaEE artifacts to a running domain. (Cold redeployment by first calling undeploy and then deploy . Use deploy to effect a hot deployment.)
-glassfish:undeploy Undeploy JavaEE components from a running domain.
-glassfish:stop-domain Stop a running Glassfish domain.
-glassfish:delete-domain Delete an existing Glassfish domain.
+`glassfish:create-domain` Create a new Glassfish domain. (Creating an existing domain will cause it to be deleted and recreated.)  
+`glassfish:start-domain` Start an existing Glassfish domain. (Starting a non-existent domain will cause it to be created.)  
+`glassfish:deploy` Deploy JavaEE artifacts to a running domain. (Deploying to an inactive domain will cause it to be started and created if necessary.)  
+`glassfish:redeploy` Redeploy JavaEE artifacts to a running domain. (Cold redeployment by first calling undeploy and then deploy . Use deploy to effect a hot deployment.)  
+`glassfish:undeploy` Undeploy JavaEE components from a running domain.  
+`glassfish:stop-domain` Stop a running Glassfish domain.  
+`glassfish:delete-domain` Delete an existing Glassfish domain.  
 - See more at: https://maven-glassfish-plugin.java.net/#sthash.nADTKrAt.dpuf
 
 Visual components

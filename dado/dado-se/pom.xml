@@ -30,15 +30,15 @@
          	<classifier>classes</classifier>
          </dependency>
 
-         <!-- Glassfish Client Module 
-mvn install:install-file -Dfile=C:\glassfish4\glassfish\modules\gf-client-module.jar -DgroupId=org.glassfish -DartifactId=gf-client-module -Dversion=4.1.1 -Dpackaging=jar
-         -->
+         <!-- Glassfish Client Module -->
 	 <dependency>
-	 	 	<groupId>org.glassfish</groupId>
-	 	 	<artifactId>gf-client-module</artifactId>
-	 	 	<version>4.1.1</version>
+	 	 	<groupId>test</groupId>
+	 	 	<artifactId>x</artifactId>
+	 	 	<version>1.0</version>
+	 	 	<scope>system</scope>
+        <systemPath>C:\Desenvolvimento2015\glassfish4\glassfish\lib\gf-client.jar</systemPath>
 	 </dependency>
-         
+
     </dependencies>  
     
 </project>
