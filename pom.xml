@@ -30,6 +30,7 @@
     <module>futebol</module>
     <module>calculator-ear</module>
     <module>dado</module>
+    <module>carrinho</module>
   </modules>
 
     <scm>

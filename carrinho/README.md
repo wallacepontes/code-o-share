@@ -1,4 +1,4 @@
-dado: Dado used in a WAR and Stateless EJB inside a WAR
+carrinho: Carrinho used in a WAR and Stateful EJB inside a WAR
 ===============================
 Author: Wallace Pontes
 Level: Intermediate   
@@ -13,17 +13,18 @@ SLSB (Stateless) and attachClasses/archiveClasses with Maven
 
 This example covers the following annotations:
 
-* `@Stateless` : `@Local` and `@Remote`
-* `@WebServlet` and `@EJB`
-* `@ManagedBean` and `@EJB`
-* `@PostConstruct` and `@PreDestroy`
-* `@Asynchronous` 
+* `@Stateful` : `@Local` and `@Remote`  
+* `@WebServlet` and `@EJB`  
+* `@ManagedBean`, `@EJB` and `@SessionScoped`  
+* `@PostConstruct` and `@PreDestroy`  
+* `@PrePassivate` and `@PosPassivate`  
+
 
 This is an WAR version, with the following structure:
 
-    -`dado - parent module
-        - `dado-se`: Contains the stand-alone application to lookup the Remote EJB
-        - `dado-war`: Contains the web application, which uses the EJB beans. Creates a `.war` file
+    -`carrinho - parent module
+        - `carrinho-se`: Contains the stand-alone application to lookup the Remote EJB
+        - `carrinho-war`: Contains the web application, which uses the EJB beans. Creates a `.war` file
 
 
 
@@ -43,9 +44,9 @@ _NOTE: The following build command assumes you have configured your Maven user s
 
         mvn clean package glassfish:deploy
 
-4. This will generate a deploy file at `./dado/dado-war/target/dado-war-1.0-SNAPSHOT.war` to be deploying in the server.
+4. This will generate a deploy file at `./dado/carrinho-war/target/carrinho-war-1.0-SNAPSHOT.war` to be deploying in the server.
 
-5. Navigate to the sub directory `dado-war`.
+5. Navigate to the sub directory `carrinho-war`.
 6. Type this command to deploy the archive:
 
         mvn glassfish:deploy
