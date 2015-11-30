@@ -31,6 +31,7 @@
     <module>calculator-ear</module>
     <module>dado</module>
     <module>carrinho</module>
+    <module>chat</module>
   </modules>
 
     <scm>
