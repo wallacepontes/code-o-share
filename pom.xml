@@ -33,6 +33,7 @@
     <module>carrinho</module>
     <module>chat</module>
     <module>persistence-example</module>
+    <module>transaction-example</module>
   </modules>
 
     <scm>
