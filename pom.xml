@@ -32,6 +32,7 @@
     <module>dado</module>
     <module>carrinho</module>
     <module>chat</module>
+    <module>persistence-example</module>
   </modules>
 
     <scm>

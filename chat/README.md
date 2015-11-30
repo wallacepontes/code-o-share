@@ -44,9 +44,9 @@ _NOTE: The following build command assumes you have configured your Maven user s
 2. Open a command line and navigate to the root directory of this project.
 3. Type this command to build the archive:
 
-        mvn clean package glassfish:deploy
+        mvn clean package  
 
-4. This will generate a deploy file at `./dado/chat-war/target/chat-war-1.0-SNAPSHOT.war` to be deploying in the server.
+4. This will generate a deploy file at `./chat/chat-war/target/chat-war-1.0-SNAPSHOT.war` to be deploying in the server.
 
 5. Navigate to the sub directory `chat-war`.
 6. Type this command to deploy the archive:
