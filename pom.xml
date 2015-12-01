@@ -36,6 +36,7 @@
     <module>transaction-example</module>
     <module>security-example</module>
     <module>interceptors-example</module>
+    <module>scheduling-example</module>
   </modules>
 
     <scm>
