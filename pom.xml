@@ -35,6 +35,7 @@
     <module>persistence-example</module>
     <module>transaction-example</module>
     <module>security-example</module>
+    <module>interceptors-example</module>
   </modules>
 
     <scm>

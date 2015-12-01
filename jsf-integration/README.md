@@ -35,3 +35,6 @@ class Person {
 ```
 See more at: http://docs.jboss.org/hibernate/orm/5.0/userGuide/en-US/html_single/
 
+Workaround
+--------------------
+Don't forget to change the old version from jboss-logging.jar (version 3.0.1 GA) to the new jboss-logging-3.3.0.Final.jar at c:\glassfish4\glassfish\modules
