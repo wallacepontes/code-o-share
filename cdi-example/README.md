@@ -98,28 +98,3 @@ Configure the Maven
 </settings>
 ```
 See more at: http://lauraliparulo.altervista.org/glassfish-4-0-hello-world-application-with-maven-3/  
-
-
-Workarrounds  
---------------  
-1) just paste this peace of xml into domain.xml (between the others connection pool)  
-```xml
-	<jdbc-connection-pool datasource-classname="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource" name="cos_persistencedbPool" res-type="javax.sql.ConnectionPoolDataSource">
-	  <property name="password" value="root"></property>
-	  <property name="databaseName" value="cos_persistencedb"></property>
-	  <property name="url" value="jdbc:mysql://localhost:3306/cos_persistencedb"></property>
-	  <property name="serverName" value="localhost"></property>
-	  <property name="user" value="root"></property>
-	</jdbc-connection-pool>
-```
-Dont forget to copy the jdbc driver in lib, and change the URL to your needs. Next start glassfish, go to JDBC Connection Pools and test your connection.  
-
-See more at: http://stackoverflow.com/questions/33048435/glassfish-admin-console-throws-java-lang-illegalstateexception-when-creating-jdb  
-
-2) Bug 238935 - SEVERE: Exception while preparing the app : Invalid resource : jdbc/<databasename>__pm  
-renamed the datasource and the jdbc connection in glassfish   
-__datasourcename  
-the same datasource but with two underscore.  
-
-
-See more at: https://netbeans.org/bugzilla/show_bug.cgi?id=238935  

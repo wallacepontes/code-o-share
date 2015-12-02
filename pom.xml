@@ -38,6 +38,7 @@
     <module>interceptors-example</module>
     <module>scheduling-example</module>
     <module>cdi-example</module>
+    <module>bug-web</module>
   </modules>
 
     <scm>
