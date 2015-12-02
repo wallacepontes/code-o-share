@@ -39,6 +39,7 @@
     <module>scheduling-example</module>
     <module>cdi-example</module>
     <module>bug-web</module>
+    <module>jms-example</module>
   </modules>
 
     <scm>
@@ -147,8 +148,13 @@
 	    <!--
 	    <configuration>
 	              <excludes>
-	                <exclude>**/AcessoTest.java</exclude>
-	                  <exclude>**/CicloDeVidaSLSBTest.java</exclude>
+                      <exclude>**/EnviaNovoPedidoTest.java</exclude>
+                      <exclude>**/RecebePedidoTest.java</exclude>
+                      <exclude>**/EnviaNoticiaTest.java</exclude>
+                      <exclude>**/AssinanteDeNoticiasTest.java</exclude>
+	                  <exclude>**/EnviaNoticiaDuravelTest.java</exclude>
+                      <exclude>**/AssinanteDuravelTest.java</exclude>
+                      <exclude>**/PercorrendoFilaTest.java</exclude>
 	              </excludes>
             </configuration>
             -->
