@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+  ~ Ramdom EJB Client JAX-WS
+  ~ 
+  ~ License: GNU Lesser General Public License (LGPL), version 2.1 or later
+-->
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.codeoshare.jaxws</groupId>
+        <artifactId>jaxws-parent</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <groupId>org.codeoshare.jaxws</groupId>
+    <artifactId>random-ejb-client</artifactId>
+    <packaging>jar</packaging>
+
+    <name>Code-O-Share: Random EJB Client Jax WS</name>
+    <description>This example demonstrates a Java API for XML-Based Web Services - JAX-WS</description>
+    <url>http://www.codeoshare.org</url>
+   
+    <build>
+        <plugins>
+            <!-- usage of jax-ws maven plugin-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>jaxws-maven-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>wsimport-from-jdk</id>
+                        <goals>
+                            <goal>wsimport</goal>
+                        </goals>
+                         </execution>
+                </executions>
+                    <configuration>
+                        <wsdlUrls>
+                            <!-- Autodeploy the EJB before this -->
+                            <wsdlUrl>
+                                http://localhost:8080/RandomService/Random?WSDL
+                            </wsdlUrl>
+                        </wsdlUrls>
+                        <!-- Keep generated files -->
+                        <keep>true</keep> 
+                        <!-- Package name --> 
+                        <packageName>org.codeoshare.jaxws</packageName> 
+                        <!-- generated source files destination -->
+                        <sourceDestDir>target/generated-sources/jaxws</sourceDestDir>
+                        
+                    </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
