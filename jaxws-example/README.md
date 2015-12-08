@@ -21,9 +21,12 @@ This example covers the following annotations:
    
 This is an WAR version, with the following structure:
 
-    -`jaxws-example - parent module
-        - `counter-se`: Contains the stand-alone application to lookup the Remote EJB
-        - `chat-war`: Contains the web application, which uses the EJB beans. Creates a `.war` file
+    -`jaxws-example - parent module   
+        - `jaxb-se`: Contains the stand-alone application to Marshaller and Unmarshaller   
+        - `random-ejb`: Contains the JAX-WS EJB   
+        - `random-ejb-client`: Contains the JAX-WS EJB Client  
+        - `random-se`: Contains the JAX-WS with Endpoint.publish   
+        - `random-se-client`: Contains the JAX-WS Client  
 
 
 System requirements
@@ -40,14 +43,16 @@ _NOTE: The following build command assumes you have configured your Maven user s
 2. Open a command line and navigate to the root directory of this project.  
 3. Type this command to build the archive:  
 
-        mvn clean package   
+        mvn clean package -DskipTests  
 
-4. This will generate a deploy file at `./chat/chat-war/target/chat-war-1.0-SNAPSHOT.war` to be deploying in the server.  
+4. This will generate a deploy file at `./jaxws-example/random-ejb/target/random-ejb-1.0-SNAPSHOT.jar` to be deploying in the server at .\glassfish4\glassfish\domains\domain1\autodeploy.   
+4.1. Now you can consumer the WebService running the main class .\jaxws-example\random-ejb-client\src\main\java\org\codeoshare\jaxws\Consumer.java   
 
-5. Navigate to the sub directory `chat-war`.  
-6. Type this command to deploy the archive:  
+5. Publish the Jax-WS running the main class .\jaxws-example\random-se\src\main\java\org\codeoshare\jaxws\RandomPublisher.java.  
+5.1. Now you can consumer the WebService running the main class .\jaxws-example\random-se-client\src\main\java\org\codeoshare\jaxws\Consumer.java   
+5.2. The Glassfish server don't need to be running.   
 
-        mvn glassfish:deploy  
+6. Marshaller and Unmarshaller running the first class test .\jaxws-example\jaxb-se\src\test\java\org\codeoshare\jaxb\SerializadorTest.java that will create the xml file ./target/conta.xml and after that running the second test class .\jaxws-example\jaxb-se\src\test\java\org\codeoshare\jaxb\DeserializadorTest.java  
 
 
 Workarounds
