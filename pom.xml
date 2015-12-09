@@ -41,6 +41,7 @@
     <module>bug-web</module>
     <module>jms-example</module>
     <module>jaxws-example</module>
+    <module>js-bootstrap</module>
   </modules>
 
     <scm>
