@@ -1,7 +1,5 @@
 package dev.multithreading;
 
-import java.util.Iterator;
-
 public class MultithreadThing implements Runnable { // extends Thread {
 	private int threadNumber;
 	public MultithreadThing(int threadNumber) {

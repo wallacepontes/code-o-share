@@ -1,6 +1,6 @@
-package dev.ace.vt;
+package dev.multithreading.virtualthread;
 
-public class VirtualThreatApplication {
+public class VirtualThreadApplication {
 	
 	public static void main(String[] args) throws InterruptedException {
 		

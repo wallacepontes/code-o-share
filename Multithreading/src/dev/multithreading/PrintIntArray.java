@@ -1,4 +1,4 @@
-package dev.ace.vt;
+package dev.multithreading;
 
 public class PrintIntArray implements Runnable {
 	    private final int[] arrayToPrint;

@@ -1,4 +1,4 @@
-package dev.ace.vt;
+package dev.multithreading.virtualthread;
 
 import java.util.Iterator;
 import java.util.List;

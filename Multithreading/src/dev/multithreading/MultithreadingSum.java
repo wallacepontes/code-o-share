@@ -1,4 +1,4 @@
-package dev.ace.vt;
+package dev.multithreading;
 
 import java.util.*;
 import java.util.concurrent.*;

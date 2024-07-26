@@ -1,9 +1,9 @@
-package dev.ace.vt;
+package dev.multithreading;
 
-public class PrintStringArray implements Runnable {
+public class PrintArray implements Runnable {
     private final String[] arrayToPrint;
 
-    public PrintStringArray(String[] arrayToPrint) {
+    public PrintArray(String[] arrayToPrint) {
         this.arrayToPrint = arrayToPrint;
     }
 

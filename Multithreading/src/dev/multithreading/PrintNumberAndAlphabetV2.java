@@ -1,4 +1,4 @@
-package dev.ace.vt;
+package dev.multithreading;
 
 public class PrintNumberAndAlphabetV2 {
 	    public static void main(String[] args) throws InterruptedException {

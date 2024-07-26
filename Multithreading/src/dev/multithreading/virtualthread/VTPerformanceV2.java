@@ -1,4 +1,4 @@
-package dev.ace.vt;
+package dev.multithreading.virtualthread;
 
 import java.time.Duration;
 import java.time.Instant;
