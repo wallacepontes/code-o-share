@@ -3,4 +3,5 @@
 .project
 .classpath
 .metadata
+.factorypath
 /.apt_generated/
