@@ -9,7 +9,6 @@ public class J8InnerAndOuter {
         inner.accessOuter();
         
         outer.method();
-        
         inner.accessVars();
         outer.method2();
 	}
