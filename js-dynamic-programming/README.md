@@ -1,5 +1,16 @@
 # Dynamic Programming - Learn to Solve Algorithmic Problems & Coding Challenges
 
+## Table of Contents
+
+1. [Fibonacci](#fibonacci)
+2. [A Grid Traveler](#a-grid-traveler)
+3. [canSum](#cansum)
+4. [howSum](#howsum)
+5. [bestSum](#bestsum)
+6. [canConstruct](#canconstruct)
+
+## Fibonacci
+
 Here's a simple JavaScript function to calculate the Fibonacci sequence using recursion:
 
 ```javascript
@@ -31,7 +42,7 @@ console.log(fibonacci(10)); // Output: 55
 
 This dynamic programming approach has a time complexity of O(n) and is much more efficient for larger values of `n`.
 
-## Memoization
+### Memoization
 
 Memoization is a great way to improve the efficiency of the recursive Fibonacci function by storing previously calculated values. This reduces redundant calculations, giving a time complexity of O(n) without the need for an iterative approach.
 
@@ -52,22 +63,25 @@ console.log(fibonacci(10)); // Output: 55
 ```
 
 ### How it Works:
+
 - We pass an object `memo` that stores the Fibonacci values already computed.
 - Before calculating the Fibonacci value of `n`, the function checks if it's already in `memo`. If it is, the stored value is returned, avoiding recalculation.
 - If not, the function computes the value and stores it in `memo` for future use.
 
 This method retains the simplicity of the recursive approach while offering the performance benefits of dynamic programming by avoiding duplicate calculations.
 
-## JavaScript, arrays do not always allocate a fixed memory space
+### JavaScript, arrays do not always allocate a fixed memory space
 
 You're correct that in JavaScript, arrays do not always allocate a fixed memory space like in lower-level languages such as C or C++. Arrays are dynamically sized, and memory reallocation happens as they grow. This can cause performance issues, especially for large datasets or performance-critical applications, as memory allocation and resizing may occur frequently.
 
 To mitigate these concerns and improve performance, you can consider the following strategies:
 
 ### 1. **Pre-allocate Memory for Arrays**
+
 By pre-allocating a fixed size for arrays, you can avoid frequent memory reallocations and resizing during runtime.
 
 #### Example:
+
 ```javascript
 function fibonacci(n) {
   const fib = new Array(n + 1);  // Pre-allocate memory
@@ -87,9 +101,11 @@ console.log(fibonacci(10)); // Output: 55
 In this example, the `new Array(n + 1)` allocates memory upfront, reducing the number of memory allocations required during execution.
 
 ### 2. **Iterative Approach with Constant Space**
+
 Instead of storing all Fibonacci numbers, you can optimize further by only keeping track of the last two values. This reduces the memory usage to O(1) (constant space complexity).
 
-#### Example:
+#### Example fibonacci
+
 ```javascript
 function fibonacci(n) {
   if (n <= 1) return n;
@@ -111,9 +127,11 @@ console.log(fibonacci(10)); // Output: 55
 This version doesn’t require an array at all, but instead uses just two variables (`prev` and `curr`), which significantly reduces memory usage while maintaining O(n) time complexity.
 
 ### 3. **Typed Arrays**
+
 If you're working with large datasets and want more control over memory, consider using **Typed Arrays** like `Int32Array` or `Float64Array`. Typed arrays are closer to the low-level array structures in languages like C, and they offer better performance for numerical computations as they store data in a more memory-efficient way.
 
-#### Example Using `Int32Array`:
+#### Example Using `Int32Array`
+
 ```javascript
 function fibonacci(n) {
   const fib = new Int32Array(n + 1);  // Pre-allocated, fixed-size typed array
@@ -132,14 +150,15 @@ console.log(fibonacci(10)); // Output: 55
 
 Typed arrays ensure that each element is stored in a fixed number of bytes (e.g., `Int32Array` uses 4 bytes per element), which reduces overhead and improves cache efficiency.
 
-### Summary of Improvements:
+### Summary of Improvements
+
 - **Pre-allocate memory**: Allocate arrays with a fixed size to avoid dynamic resizing.
 - **Constant space optimization**: Use an iterative approach with only two variables to minimize memory usage.
 - **Typed Arrays**: Use `TypedArray` for improved memory efficiency, especially when dealing with large data or numerical computations.
 
 These strategies can help improve the performance of JavaScript Fibonacci implementations, especially for large inputs or performance-critical scenarios.
 
-## Fibonacci diagram
+### Fibonacci diagram
 
 Here is a Fibonacci diagram of calculating `fibonacci(7)`:
 
@@ -157,7 +176,8 @@ graph TD
     f35 --> f16[(1)]
 ```
 
-### Explanation:
+### Explanation Fibonacci diagram
+
 1. `fibonacci(3)` breaks into `fibonacci(2)` and `fibonacci(1)`.
 2. `fibonacci(2)` breaks into `fibonacci(1)` and `fibonacci(0)`.
 3. `fibonacci(1)` and `fibonacci(0)` return 1 and 0, respectively, while other `fibonacci(1)` also returns 1.
@@ -167,38 +187,45 @@ This represents the recursive calls that happen during the calculation of `fibon
 Yes, you are correct! Here's the complexity breakdown of a **memoized Fibonacci** function:
 
 ### **Time Complexity: O(n)**
+
 - In a memoized Fibonacci function, each value from `fibonacci(0)` to `fibonacci(n)` is calculated **once** and then stored in memory (i.e., memoized). 
 - The recursion only happens for new values that haven't been calculated yet. Once a value is computed, it's fetched directly from the memo, which takes constant time, `O(1)`.
 - Thus, there are `n` recursive calls, and each call does `O(1)` work after memoization is applied.
 - Overall, this results in a time complexity of **O(n)**.
 
 ### **Space Complexity: O(n)**
+
 - The memoization technique requires storing the results of `fibonacci(0)` through `fibonacci(n)` in memory.
 - Since we're storing `n + 1` values in the memo object (or array), the space required is proportional to `n`, which results in **O(n)** space complexity.
   
 In summary:
+
 - **Time Complexity**: `O(n)` (due to memoization and each Fibonacci value being calculated once).
 - **Space Complexity**: `O(n)` (due to storing all Fibonacci values up to `n` in memory).
 
 ## A Grid Traveler 
+
 To solve the `gridTraveler(m, n)` problem, we can approach it similarly to how we solved the Fibonacci sequence — using **recursion** and **memoization** to optimize.
 
 ### Problem Breakdown:
+
 - If you are on a grid of size `m x n`, you can only move **right** or **down**.
 - The base cases:
   - If you're on a 1x1 grid, there's only **1 way** to travel (you're already at the destination).
   - If either `m = 0` or `n = 0`, there are **0 ways** to travel (you can't move on a zero-dimension grid).
   
 For each grid, the total number of ways to travel is the sum of:
+
 1. **Moving right**: Which leaves a grid of size `(m, n-1)`.
 2. **Moving down**: Which leaves a grid of size `(m-1, n)`.
 
 This results in a recursive formula:
-```
+
+```javascript
 gridTraveler(m, n) = gridTraveler(m-1, n) + gridTraveler(m, n-1)
 ```
 
-### Memoized Recursive Solution:
+### Memoized Recursive Solution
 
 ```javascript
 function gridTraveler(m, n, memo = {}) {
@@ -220,21 +247,23 @@ console.log(gridTraveler(2, 3)); // Output: 3
 console.log(gridTraveler(3, 3)); // Output: 6
 ```
 
-### Explanation:
+### Explanation Memoized Recursive Solution
+
 - **Base cases**: We handle the 1x1 grid and the 0-dimension grid cases.
 - **Memoization**: We use a JavaScript object `memo` to store previously calculated results for a specific grid size (keyed by `"m,n"`). This reduces the number of redundant recursive calls and improves the time complexity from exponential to polynomial.
 
-### Time and Space Complexity:
-- **Time Complexity: O(m * n)**: There are `m * n` distinct subproblems, and each subproblem is solved only once.
-- **Space Complexity: O(m * n)**: Due to the memoization table, we store `m * n` grid sizes. The recursion stack also goes up to `O(m + n)` deep.
+### Time and Space Complexity
 
-## A grid traveler diagram
+- **Time Complexity: O(m * n)**: There are `m * n` distinct subproblems, and each subproblem is solved only once. `O(m * n)` time
+- **Space Complexity: O(m + n)**: Due to the memoization table, we store `m * n` grid sizes. The recursion stack also goes up to `O(m + n)` deep.
+
+### A grid traveler diagram
 
 The diagram clearly shows the recursive breakdown of the `gridTraveler(2,3)` problem.
 
 ```mermaid
 graph TD
-    corner[(2,3)] --> down1[(1,3)]
+    corner[(2,3)] --> down1[(1,3)] 
     corner --> right1[(2,2)]
     down1 --> down2[(0,3)]
     down1 --> right2[(1,2)]
@@ -249,6 +278,7 @@ graph TD
 ```
 
 Here's a detailed explanation of the diagram:
+
 - Starting at `(2,3)`, there are two main paths:
   1. Move **down** to `(1,3)`
   2. Move **right** to `(2,2)`
@@ -264,6 +294,463 @@ Here's a detailed explanation of the diagram:
 - This breakdown continues until all paths eventually reach `(1,1)` or `(0,0)` (invalid state), which represents the successful traversal paths or dead ends.
 
 This visualization helps to understand the recursive nature of the `gridTraveler` problem and how each move reduces the problem to smaller grids until it reaches the base case (either `(1,1)` or an invalid grid).
+
+### **Memoization Recipe: Simplified**
+
+1. **Make it Work**:
+   - Visualize the problem as a **tree** of recursive calls.
+   - Implement the logic using **recursion**.
+   - Test the recursive solution to ensure correctness.
+
+2. **Make it Efficient**:
+   - Add a **memo object** to store previously calculated results.
+   - Modify the base case to **return memoized values** if they exist.
+   - Store return values into the **memo object** to avoid redundant computations.
+
+This streamlined approach keeps it straightforward and helps you focus on solving the problem first, then optimizing for efficiency later!
+
+The **Memoization Recipe** is a systematic approach for solving dynamic programming problems by breaking down complex problems into smaller, overlapping subproblems and storing their solutions to avoid redundant calculations. Here's a recommended set of guidelines to follow when solving dynamic programming problems using memoization:
+
+### **Memoization Recipe**
+
+1. **Make it Recursive**:
+   - Start by defining the problem recursively. Focus on breaking the problem into smaller subproblems.
+   - Identify the base case(s), i.e., when the recursion should stop (usually the simplest form of the problem).
+
+2. **Identify Overlapping Subproblems**:
+   - Find which subproblems are being solved repeatedly in the recursion. This is a key to applying memoization effectively.
+   - If you see the same subproblem being solved more than once, that's where memoization can save time.
+
+3. **Add Memoization**:
+   - Use a data structure (such as an object or array) to store the results of each subproblem.
+   - Before computing a new subproblem, check if it has already been computed and stored in the memo. If so, return the stored result instead of recomputing it.
+
+4. **Analyze Time Complexity**:
+   - Once you've added memoization, the time complexity typically becomes the product of the number of unique subproblems times the cost of computing each subproblem (usually constant with memoization).
+
+5. **Convert to Tabulation (if needed)**:
+   - While memoization is a top-down approach (starting from the problem and breaking it down into subproblems), **tabulation** is a bottom-up approach.
+   - If memoization leads to recursion depth problems or inefficiency, you can convert the solution into a tabulation (iterative) form.
+
+### **Memoization Recipe Key Principles**
+
+- **Overlapping Subproblems**: Look for repeated subproblem calculations.
+- **Optimal Substructure**: Ensure that the solution to the problem can be constructed efficiently from solutions to subproblems.
+- **Store and Reuse**: Always use a memo to store results of subproblems and reuse them as needed.
+  
+### **Tips and Recommendations**
+
+- **Choose the Right Data Structure**: Use objects for flexible key-value storage, or arrays for simple indices.
+- **Start Simple**: Write a basic recursive solution before adding memoization. This will help you identify where memoization will optimize the solution.
+- **Iterative or Recursive?**: While memoization is a top-down approach, sometimes the problem can be more efficient with an iterative (bottom-up) approach like tabulation.
+- **Edge Cases**: Always consider special cases like `m = 0`, `n = 0`, or small values of `m` and `n`.
+
+By following this memoization recipe, you can systematically approach dynamic programming problems and optimize them for performance.
+
+## canSum
+
+- **canSum memoization -> "Can you do it? yes/no" -> Decision Problem**
+
+Alright, so I think it's tempting increase a difficulty. So let's work on this canSum function, what I need to do here is:
+Write a function canSum(targetSum, numbers) that takes in a targetSum and an array of numbers as arguments. The function should return a boolean indicating whether or not it is possible to generate the targetSum using numbers from the array. You may use an element of the array as many times as needed. You may assume that all input numbers are nonnegative. For instance: 
+canSum(7, [5,3,4,7]) -> true
+canSum(7, [2,4]) -> false
+
+The `canSum(targetSum, numbers)` problem can be solved using **recursion** and **memoization**, similar to the previous grid traveler problem. The goal is to determine if it's possible to generate the `targetSum` by summing numbers from the `numbers` array, where you can use elements of the array as many times as needed.
+
+### **Breakdown of the Problem**
+
+1. **Recursive Approach**:
+   - Start with the `targetSum`. At each step, subtract one of the numbers from the target and recursively check if the remaining sum can be achieved.
+   - If the `targetSum` becomes `0`, return `true` (since you've successfully generated the target sum).
+   - If the `targetSum` becomes negative, return `false` (since it's not possible to achieve the target sum).
+
+2. **Memoization**:
+   - If the same subproblem (same `targetSum`) is being solved multiple times, store the result in a memo object to avoid redundant calculations.
+
+### Recursive Function without Memoization
+
+```javascript
+function canSum(targetSum, numbers) {
+  // Base cases
+  if (targetSum === 0) return true;  // Success: reached the target sum
+  if (targetSum < 0) return false;   // Failure: overshot the target sum
+
+  // Recursively try each number
+  for (let num of numbers) {
+    const remainder = targetSum - num;
+    if (canSum(remainder, numbers)) {
+      return true; // If we can sum to the remainder, we can sum to targetSum
+    }
+  }
+
+  return false; // None of the numbers could sum to targetSum
+}
+
+console.log(canSum(7, [5, 3, 4, 7])); // Output: true
+console.log(canSum(7, [2, 4])); // Output: false
+```
+
+### Brute force Complexity
+
+- **Time Complexity**: O( n <sup>m</sup> ) or O( n ^ m )
+- **Space Complexity**: O(m)
+
+### Optimized Solution with Memoization
+
+We add a **memo object** to store the results of subproblems (different values of `targetSum`). This ensures that we don't solve the same subproblem more than once.
+
+```javascript
+function canSum(targetSum, numbers, memo = {}) {
+  // Check if result is in memo
+  if (targetSum in memo) return memo[targetSum];
+  
+  // Base cases
+  if (targetSum === 0) return true;
+  if (targetSum < 0) return false;
+  
+  // Recursively try each number
+  for (let num of numbers) {
+    const remainder = targetSum - num;
+    if (canSum(remainder, numbers, memo)) {
+      memo[targetSum] = true; // Memoize result
+      return true;
+    }
+  }
+  
+  memo[targetSum] = false; // Memoize result
+  return false;
+}
+
+console.log(canSum(7, [5, 3, 4, 7])); // Output: true
+console.log(canSum(7, [2, 4])); // Output: false
+console.log(canSum(300, [7, 14])); // Output: false
+```
+
+### **Explanation canSum Memoized Implementation**
+
+- **Base Cases**: 
+  - `targetSum === 0`: We've exactly hit the target sum, so return `true`.
+  - `targetSum < 0`: We've exceeded the target sum, so return `false`.
+  
+- **Memoization**: 
+  - We store the result for each `targetSum` in the `memo` object to avoid recalculating for the same target.
+  
+### **Time and Space Complexity**
+
+- **Time Complexity**: O(n * m), where `n` is the length of the `numbers` array and `m` is the target sum. This is because there are at most `m` subproblems, and for each subproblem, we iterate through `n` numbers.
+- **Space Complexity**: O(m) due to the recursion stack and the memoization object, where `m` is the target sum.
+
+This approach makes it efficient to solve the problem even for large target sums by avoiding redundant recursive calls!
+
+### canSum diagram
+
+The diagram clearly shows the recursive breakdown of the `canSum(8,[2,3,5])` problem.
+
+```mermaid
+graph TD
+    targetSum[(8)] --> |-2|number1[(6)] 
+    targetSum --> |-3|number2[(5)]
+    targetSum --> |-5|number3[(3)]
+    number1 --> |-2|number11(4)
+    number11(4) --> |-2|number13d(2)
+    number11(4) --> |-3|number23d(1)
+    number13d --> |-2|number14(0)
+    number1 --> |-3|number21(3)
+    number21 --> |-2|number13c(1)
+    number21 --> |-3|number23c(0)
+    number1 --> |-5|number31(1)
+    number2 --> |-2|number12(3)
+    number12 --> |-2|number13(1)
+    number12 --> |-3|number23(0)
+    number2 --> |-3|number22(2)
+    number22 --> |-2|number13b(0)
+    number2 --> |-5|number32(0)
+    number3 --> |-2|number13a(1)
+    number3 --> |-3|number23a(0)
+```
+
+## howSum
+
+- **howSum Memoization -> "How will you do it?" -> Combinatoric Problem**
+
+Let's carryover a lot of that knowledge to solve this new Howsam problem. So this problem is:
+Write a function howSum(targetSum, numbers)that takes in a targetSum and an array of numbers as arguments. The function should return an array containing any combination of elements that add up to exactly the targetSum. If there is no combination that adds up to the targetSum, then return null. If there are multiple combinations possible, you may return any single one. For instance:
+
+- howSum(7, [5,3,4,7]) -> [3,4] or howSum(7, [5,3,4,7]) -> [7], both are considered correct
+- howSum(8, [2,3,5]) -> [2,2,2,2] or just [3,5]
+- howSum(7, [2,4]) -> null
+- howSum(0, [1,2,3]) -> []
+
+The `howSum(targetSum, numbers)` problem is a slight variation on the `canSum` problem. Instead of returning a boolean to indicate if it's possible to reach the `targetSum`, you now need to return an **array of numbers** that sum to the target.
+
+We can approach this problem in a similar recursive fashion with memoization to optimize the solution.
+
+### **Recursive Approach (Without Memoization)**
+
+1. At each recursive step, subtract a number from `targetSum` and recursively call the function with the new remainder.
+2. If the remainder is `0`, return an empty array (since we've successfully summed to `targetSum`).
+3. If the remainder becomes negative, return `null` (since it's not possible to reach the target).
+
+### **Base Cases of howSum**
+
+- If `targetSum === 0`, return an empty array `[]` (indicating success).
+- If `targetSum < 0`, return `null` (indicating it's impossible to reach the target).
+
+### **Recursive Implementation**
+
+```javascript
+function howSum(targetSum, numbers) {
+  // Base cases
+  if (targetSum === 0) return []; // Successfully summed to targetSum
+  if (targetSum < 0) return null; // Overshot targetSum, return failure
+
+  // Try each number in the array
+  for (let num of numbers) {
+    const remainder = targetSum - num;
+    const remainderResult = howSum(remainder, numbers); // Recursive call
+    if (remainderResult !== null) {
+      return [...remainderResult, num]; // If remainderResult is not null, return combination
+    }
+  }
+
+  return null; // No combination found
+}
+
+console.log(howSum(7, [5, 3, 4, 7])); // Output: [3, 4] or [7]
+console.log(howSum(8, [2, 3, 5])); // Output: [3, 5]
+console.log(howSum(7, [2, 4])); // Output: null
+console.log(howSum(0, [1, 2, 3])); // Output: []
+```
+
+### Brute force Complexity of howSum
+
+- **Time Complexity**: O( n <sup>m</sup> * m) or O( n ^ m * m)
+- **Space Complexity**: O(m)
+
+### **Optimized with Memoization**
+
+To improve the performance and avoid recalculating the same subproblems, we can use a **memoization** object to store already computed results.
+
+### **Memoized Implementation**
+
+```javascript
+function howSum(targetSum, numbers, memo = {}) {
+  // Check if result is in memo
+  if (targetSum in memo) return memo[targetSum];
+
+  // Base cases
+  if (targetSum === 0) return [];
+  if (targetSum < 0) return null;
+
+  // Try each number in the array
+  for (let num of numbers) {
+    const remainder = targetSum - num;
+    const remainderResult = howSum(remainder, numbers, memo); // Recursive call with memoization
+    if (remainderResult !== null) {
+      memo[targetSum] = [...remainderResult, num]; // Memoize result
+      return memo[targetSum];
+    }
+  }
+
+  memo[targetSum] = null; // Memoize failure result
+  return null;
+}
+
+console.log(howSum(7, [5, 3, 4, 7])); // Output: [3, 4] or [7]
+console.log(howSum(8, [2, 3, 5])); // Output: [3, 5] or [2, 2, 2, 2]
+console.log(howSum(7, [2, 4])); // Output: null
+console.log(howSum(0, [1, 2, 3])); // Output: []
+```
+
+### **Explanation howSum Memoized Implementation**
+
+- **Base Cases**:
+  - `targetSum === 0`: We return an empty array because no more numbers are needed.
+  - `targetSum < 0`: We return `null` because we cannot sum to a negative number.
+  
+- **Recursive Step**:
+  - For each number in `numbers`, we subtract the number from `targetSum` and recursively call `howSum` on the new remainder.
+  - If the remainder can sum to `0`, we return an array containing the combination of numbers that added to the original `targetSum`.
+
+### **Memoization**
+
+- We store previously computed results in the `memo` object to avoid recalculating the same `targetSum`.
+  
+### **Time and Space Complexity howSum**
+
+- **Time Complexity**: O(n * m^2), where `n` is the length of the `numbers` array and `m` is the `targetSum`. There are at most `m` unique subproblems, and for each, we iterate through the `n` numbers.
+- **Space Complexity**: O(m^2) because, in the worst case, we're storing arrays in the memo for each subproblem of size `targetSum`.
+
+This solution is efficient for larger inputs due to memoization and solves the problem in a straightforward manner!
+
+### howSum diagram
+
+The diagram clearly shows the recursive breakdown of the `howSum(7,[5,3,4,7])` problem.
+
+```mermaid
+graph TD
+    targetSum[(7)] --> |-5|number1[(2)] 
+    targetSum --> |-3|number2[(4)]
+    targetSum --> |-4|number3[(3)]
+    targetSum --> |-7|number4[(0)]
+    number2 --> |-3|number21[(1)]
+    number2 --> |-4|number22[(0)]
+    number3 --> |-3|number31[(0)]
+```
+
+## bestSum
+
+- **bestSum Memoization -> "What is the 'best' way to do it?" -> Optimization Problem**
+
+Now let's go over one more variation of it. the problem is:
+Write a function bestSum(targetSum, numbers) that takes in a targetSum and an array of numbers as arguments. The function should return an array containing the shortest combination of numbers that add up to exactly the targetSum. If there is a tie for the shortest combination, you may return any one of the shortest. For instance:
+- bestSum(7, [5,3,4,7]) -> [7]
+- bestSum(8, [2,3,5]) -> [3,5]
+
+The `bestSum(targetSum, numbers)` problem is a variation of the `howSum` problem, but instead of returning *any* combination that adds up to `targetSum`, we now want to return the **shortest** combination.
+
+### Key Idea
+
+- We can follow the same recursive pattern, but at each step, we'll compare the combinations and keep track of the shortest one.
+- Memoization is essential to avoid recalculating subproblems and improve efficiency.
+
+### **Recursive Approach (Without Memoization)**
+
+1. At each step, subtract a number from the `targetSum` and recursively call the function on the remainder.
+2. If a valid combination is found, check if it's the shortest one seen so far.
+3. Return the shortest valid combination.
+
+### **Base Cases of bestSum**
+
+- If `targetSum === 0`, return an empty array (indicating success).
+- If `targetSum < 0`, return `null` (indicating failure).
+
+### **Recursive Implementation**:
+
+```javascript
+function bestSum(targetSum, numbers) {
+  // Base cases
+  if (targetSum === 0) return [];
+  if (targetSum < 0) return null;
+
+  let shortestCombination = null;
+
+  for (let num of numbers) {
+    const remainder = targetSum - num;
+    const remainderCombination = bestSum(remainder, numbers);
+    if (remainderCombination !== null) {
+      const combination = [...remainderCombination, num]; // Build the new combination
+      // If the current combination is shorter than the stored one, replace it
+      if (shortestCombination === null || combination.length < shortestCombination.length) {
+        shortestCombination = combination;
+      }
+    }
+  }
+
+  return shortestCombination;
+}
+
+console.log(bestSum(7, [5, 3, 4, 7])); // Output: [7]
+console.log(bestSum(8, [2, 3, 5])); // Output: [3, 5]
+console.log(bestSum(8, [1, 4, 5])); // Output: [4, 4]
+console.log(bestSum(100, [1, 2, 5, 25])); // Output: [25, 25, 25, 25]
+```
+
+### Brute force Complexity of bestSum
+
+- **Time Complexity**: O( n <sup>m</sup> * m) or O( n^m * m)
+- **Space Complexity**: O(m <sup>2</sup>) or O(m ^ 2)
+
+### **Optimized with Memoization of bestSum**
+
+Just like the previous problems, adding memoization drastically improves performance. We'll store the results of previously computed `targetSum` values to avoid redundant calculations.
+
+### **Memoized Implementation of bestSum**
+
+```javascript
+function bestSum(targetSum, numbers, memo = {}) {
+  // Check memo for stored result
+  if (targetSum in memo) return memo[targetSum];
+  if (targetSum === 0) return [];
+  if (targetSum < 0) return null;
+
+  let shortestCombination = null;
+
+  for (let num of numbers) {
+    const remainder = targetSum - num;
+    const remainderCombination = bestSum(remainder, numbers, memo); // Recursive call with memoization
+    if (remainderCombination !== null) {
+      const combination = [...remainderCombination, num];
+      // If the current combination is shorter, update the shortestCombination
+      if (shortestCombination === null || combination.length < shortestCombination.length) {
+        shortestCombination = combination;
+      }
+    }
+  }
+
+  memo[targetSum] = shortestCombination; // Memoize the result
+  return shortestCombination;
+}
+
+console.log(bestSum(7, [5, 3, 4, 7])); // Output: [7]
+console.log(bestSum(8, [2, 3, 5])); // Output: [3, 5]
+console.log(bestSum(8, [1, 4, 5])); // Output: [4, 4]
+console.log(bestSum(100, [1, 2, 5, 25])); // Output: [25, 25, 25, 25]
+```
+
+### **Explanation of bestSum Memoized Implementation**
+
+- **Base Cases**:
+  - `targetSum === 0`: Return an empty array because we don't need any more numbers.
+  - `targetSum < 0`: Return `null` because we can't reach a negative number.
+
+- **Recursive Logic**:
+  - For each number in `numbers`, subtract the number from the `targetSum` to get the remainder.
+  - Recursively call `bestSum` with the remainder and check if it returns a valid combination.
+  - If it does, create a new combination by adding the current number to the remainder combination.
+  - Keep track of the shortest valid combination and return it.
+
+- **Memoization**:
+  - We store previously computed results in the `memo` object to avoid recomputing the same subproblems.
+
+### **Time and Space Complexity of bestSum**
+
+- **Time Complexity**: O(n * m²), where `n` is the length of the `numbers` array and `m` is the `targetSum`. There are at most `m` unique subproblems, and for each, we iterate through the `n` numbers. Additionally, combining arrays takes O(m) time in the worst case.
+- **Space Complexity**: O(m²) due to the recursive call stack and the storage of arrays in the memo.
+
+This solution efficiently finds the shortest combination of numbers that sum to the `targetSum`!
+
+### bestSum diagram
+
+The diagram clearly shows the recursive breakdown of the `bestSum(8,[2,3,5])` problem.
+
+```mermaid
+graph TD
+    targetSum[(8)] --> |-2|number1[(6)] 
+    targetSum --> |-3|number2[(5)]
+    targetSum --> |-5|number3[(3)]
+    number1 --> |-2|number13b[(4)]
+    number13b --> |-2|number14[(2)]
+    number14 --> |-2|number15[(0)]
+    number13b --> |-3|number24[(1)]
+    number1 --> |-3|number23b[(3)]
+    number23b --> |-2|number15b[(1)]
+    number23b --> |-3|number25b[(0)]
+    number1 --> |-5|number33b[(1)]
+    number2 --> |-2|number12[(3)]
+    number12 --> |-2|number13a[(1)]
+    number12 --> |-3|number23a[(0)]
+    number2 --> |-3|number22[(2)]
+    number22 --> |-2|number13[(0)]
+    number2 --> |-5|number32a[(0)]
+    number3 --> |-2|number31[(1)]
+    number3 --> |-3|number32[(0)]
+```
+
+## canConstruct
+
+- **canConstruct Memoization**
 
 ## Videos
 
