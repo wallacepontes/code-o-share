@@ -8,6 +8,10 @@
 4. [howSum](#howsum)
 5. [bestSum](#bestsum)
 6. [canConstruct](#canconstruct)
+7. [countConstruct](#countconstruct)
+8. [Videos](#videos)
+
+**[Download Node.js the way you want.](https://nodejs.org/en/download/package-manager)**
 
 ## Fibonacci
 
@@ -752,7 +756,127 @@ graph TD
 
 - **canConstruct Memoization**
 
+I think it's time to work on another prompt, let's say I gave you this:
+Write a function canConstruct(target, wordBank) that accepts a target string and an array of strings. The function should return a boolean indicating whether or not the target can be constructed by concatenating elements of the wordBank array. You may reuse elements of wordBank as many times as needed. For instance:
+- canConstruct(abcdef, [ab, abc, cd, def, abcd]) -> [abc] + [def] -> true
+- canConstruct(skateboard, [ bo, rd, ate, t, ska, sk, boar ] ) -> false
+- canConstruct('', [cat, dog, mouse]) -> true
+
+The `canConstruct(target, wordBank)` problem asks if the `target` string can be constructed using the strings in the `wordBank`, with the possibility of reusing elements from `wordBank` multiple times. This problem has a similar structure to our previous problems, so we can leverage a recursive approach with memoization to efficiently solve it.
+
+### **Recursive Approach**
+
+1. If the `target` is empty, return `true` because an empty string can always be "constructed" trivially.
+2. For each string in `wordBank`, check if the string is a prefix of the `target`.
+   - If so, recursively check if the remaining portion of the `target` (after removing the prefix) can be constructed using the same process.
+3. If none of the strings in `wordBank` match a prefix of `target`, return `false`.
+
+### **Base Case of canConstruct**
+
+- If the `target` is an empty string, return `true` (you can construct an empty string using no elements).
+
+### **Recursive Implementation (Without Memoization)**
+
+```javascript
+function canConstruct(target, wordBank) {
+  // Base case: if the target is an empty string, return true
+  if (target === '') return true;
+
+  for (let word of wordBank) {
+    // If the word matches the prefix of the target
+    if (target.indexOf(word) === 0) {
+      const suffix = target.slice(word.length); // Remove the prefix
+      if (canConstruct(suffix, wordBank)) {
+        return true; // Recursively check if the suffix can be constructed
+      }
+    }
+  }
+
+  return false; // If no prefix matches, return false
+}
+
+console.log(canConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"])); // true
+console.log(canConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"])); // false
+console.log(canConstruct("", ["cat", "dog", "mouse"])); // true
+```
+
+### Brute force Complexity of canConstruct
+
+- **Time Complexity**: O( n <sup>m</sup> * m) or O( n^m * m)
+- **Space Complexity**: O(m <sup>2</sup>) or O(m ^ 2)
+
+### **Optimized with Memoization of canConstruct**
+
+Just like the previous problems, adding memoization will prevent redundant calculations by storing the results of previously computed subproblems.
+
+### **Memoized Implementation of canConstruct**
+
+```javascript
+function canConstruct(target, wordBank, memo = {}) {
+  // Check if the result is already in the memo
+  if (target in memo) return memo[target];
+  if (target === '') return true;
+
+  for (let word of wordBank) {
+    if (target.indexOf(word) === 0) {
+      const suffix = target.slice(word.length); // Remove the prefix
+      if (canConstruct(suffix, wordBank, memo)) {
+        memo[target] = true; // Memoize the result
+        return true;
+      }
+    }
+  }
+
+  memo[target] = false; // Memoize the result
+  return false;
+}
+
+console.log(canConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"])); // true
+console.log(canConstruct("skateboard", ["bo", "rd", "ate", "t", "ska", "sk", "boar"])); // false
+console.log(canConstruct("", ["cat", "dog", "mouse"])); // true
+```
+
+### **Explanation of canConstruct**
+
+- **Base Case**: 
+  - If the `target` is an empty string, return `true` because you can trivially construct an empty string.
+- **Recursive Logic**: 
+  - For each word in `wordBank`, if the word matches the prefix of the `target`, recursively check if the remaining portion (`suffix`) can be constructed from the `wordBank`.
+  - If any recursive call returns `true`, memoize the result as `true` and return it.
+  - If no valid construction is found, memoize `false` and return it.
+- **Memoization**: 
+  - We store the results for each `target` string in the `memo` object to avoid redundant recursive calls.
+
+### **Time and Space Complexity of canConstruct**
+
+- **Time Complexity**: O(n * m²), where `n` is the length of the `target` string and `m` is the number of words in `wordBank`. For each recursive call, we may slice the `target` string, which takes O(m) time, and we may check the `target` string `n` times.
+- **Space Complexity**: O(m²), due to the recursion stack and the size of the memo object, which stores results for each subproblem.
+
+This approach is efficient for solving the `canConstruct` problem by reducing redundant calculations with memoization!
+
+### canConstruct diagram
+
+The diagram clearly shows the recursive breakdown of the `canConstruct(abcdef,[ab,abc,cd,def,abcd])` problem.
+
+```mermaid
+graph TD
+    targetSum[abcdef] --> |ab|number1[cdef] 
+    targetSum --> |abc|number2[def]
+    targetSum --> |abcd|number3[ef]:::ef
+    number1 --> |cd|number13b[ef]:::ef
+    number2 --> |def|number12['']
+    classDef ef stroke:#f00,fill:#f96
+```
+
+## countConstruct
+
+- **countConstruct Memoization**
+
 ## Videos
 
 * [Dynamic Programming - Learn to Solve Algorithmic Problems & Coding Challenges](https://www.youtube.com/watch?v=oBt53YbR9Kk)
 	> [<img src="https://img.youtube.com/vi/oBt53YbR9Kk/0.jpg" width="200">](https://www.youtube.com/watch?v=oBt53YbR9Kk "Dynamic Programming - Learn to Solve Algorithmic Problems & Coding Challenges by Bouali Ali 51,714 views 3 hours, 17 minutes")
+
+## References
+
+1. [Styling a mermaid](https://mermaid.js.org/syntax/flowchart.html#styling-and-classes)
