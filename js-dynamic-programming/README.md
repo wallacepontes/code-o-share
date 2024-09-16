@@ -872,6 +872,216 @@ graph TD
 
 - **countConstruct Memoization**
 
+Now let's work on the counting version of this problem. In particular, I want to work on count construct. So we have:
+Write a function countConstruct( target, wordBank) that accepts a target string and an array of strings. The function should return the number of ways that the target can be constructed by concatenating elements of the wordBank array. You may reuse elements of wordBankas many times as needed. For instance, 
+- countConstruct(abcdef, [ab, abc, cd, def, abcd]) -> 1
+- countConstruct(purple, [purp, p, ur, le, purpl]) -> 2
+
+To solve the `countConstruct(target, wordBank)` problem, we can follow a similar approach to the `canConstruct` problem. The key difference is that instead of returning a boolean to indicate whether construction is possible, we will return a number representing the total number of ways the target can be constructed.
+
+### **Recursive Approach countConstruct**
+
+1. If the `target` is empty, return `1`, since there's one way to construct an empty string.
+2. For each string in `wordBank`, check if the string is a prefix of the `target`.
+   - If so, recursively count the number of ways the remaining portion of the target can be constructed using the same process.
+3. The total count is the sum of the number of ways to construct the target using each valid word.
+
+### **Recursive Implementation (Without Memoization) countConstruct**
+
+```javascript
+function countConstruct(target, wordBank) {
+  if (target === '') return 1; // Base case: one way to construct the empty string
+
+  let totalCount = 0;
+
+  for (let word of wordBank) {
+    if (target.indexOf(word) === 0) { // If the word is a prefix
+      const numWaysForRest = countConstruct(target.slice(word.length), wordBank); // Count ways for the rest of the target
+      totalCount += numWaysForRest;
+    }
+  }
+
+  return totalCount;
+}
+
+console.log(countConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"])); // 1
+console.log(countConstruct("purple", ["purp", "p", "ur", "le", "purpl"])); // 2
+```
+
+### Brute force Complexity of countConstruct
+
+- **Time Complexity**: O( n <sup>m</sup> * m) or O( n^m * m)
+- **Space Complexity**: O(m <sup>2</sup>) or O(m ^ 2)
+
+### **Optimized with Memoization countConstruct**
+
+To improve efficiency, we can use memoization to avoid redundant calculations for the same `target` string.
+
+### **Memoized Implementation**:
+
+```javascript
+function countConstruct(target, wordBank, memo = {}) {
+  if (target in memo) return memo[target];
+  if (target === '') return 1; // Base case: one way to construct the empty string
+
+  let totalCount = 0;
+
+  for (let word of wordBank) {
+    if (target.indexOf(word) === 0) { // If the word is a prefix
+      const numWaysForRest = countConstruct(target.slice(word.length), wordBank, memo); // Count ways for the rest of the target
+      totalCount += numWaysForRest;
+    }
+  }
+
+  memo[target] = totalCount; // Store the result in the memo
+  return totalCount;
+}
+
+console.log(countConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd"])); // 1
+console.log(countConstruct("purple", ["purp", "p", "ur", "le", "purpl"])); // 2
+```
+
+### **Explanation**
+
+- **Base Case**: If the `target` is an empty string, return `1` because there's exactly one way to construct an empty string.
+- **Recursive Logic**: For each word in the `wordBank`, if it matches the prefix of the `target`, recursively calculate how many ways the rest of the target string can be constructed. The total count for the target is the sum of the counts from all valid prefixes.
+- **Memoization**: We store the results for each `target` string in the `memo` object to avoid recomputation.
+
+### **Time and Space Complexity countConstruct**
+
+- **Time Complexity**: O(n * m²), where `n` is the length of the `target` string and `m` is the number of words in `wordBank`. Similar to the `canConstruct` problem, we may need to slice the `target` string and check each word in `wordBank` multiple times.
+- **Space Complexity**: O(n) due to the recursion stack and the size of the memo object, where `n` is the length of the target string.
+
+This approach allows us to efficiently count the number of ways to construct a target string using the elements from a word bank.
+
+### countConstruct diagram
+
+The diagram clearly shows the recursive breakdown of the `countConstruct(abcdef,[ab,abc,cd,def,abcd])` problem.
+
+```mermaid
+graph TD
+    targetSum[abcdef] --> |ab - 0|number1[cdef] 
+    targetSum --> |abc - 1|number2[def]
+    targetSum --> |abcd - 0|number3[ef]:::ef
+    number1 --> |cd - 0|number13b[ef]:::ef
+    number2 --> |def - 1|number12['']
+    classDef ef stroke:#f00,fill:#f96
+```
+
+## allConstruct
+
+- **allConstruct memoization**
+
+Now I want to do one more variation of the string problem. So what I want to do is :
+Write a function allConstruct( target, wordBank) that accepts a target string and an array of strings. The function should return a 2D array containing all of the ways that the target can be constructed by concatenating elements of wordBank array. Each element of the 2D array should represent one combination that constructs the target. You may reuse elements of wordBank as many times as needed. For instance,
+- allConstruct(purple, [ purp, p, ur, le, purpl ]) -> [ [ purp, le ], [ p, ur, p, le ] ]
+- allConstruct(abcdef, [ ab, abc, cd, def, abcd, ef, c] ) -> [ [ab,cd,ef], [ab,c,def], [abc,def], [abcd,ef] ]
+
+The `allConstruct(target, wordBank)` problem asks for all possible ways to construct the target string using words from the `wordBank`. We need to return a 2D array where each element represents a valid combination of words that constructs the target string.
+
+### **Recursive Approach allConstruct**
+
+1. If the target string is empty, return a 2D array containing an empty array, because there's exactly one way to construct an empty string (by using nothing).
+2. For each word in `wordBank`, check if it is a prefix of the target string.
+   - If so, recursively call `allConstruct` on the remainder of the target string after removing the prefix, and append the current word to each way found.
+3. Return all combinations of words that successfully construct the target string.
+
+### **Recursive Implementation (Without Memoization) allConstruct**
+
+```javascript
+function allConstruct(target, wordBank) {
+  if (target === '') return [[]];  // Base case: one way to construct the empty string
+
+  const result = [];
+
+  for (let word of wordBank) {
+    if (target.indexOf(word) === 0) { // If the word is a prefix
+      const suffix = target.slice(word.length);
+      const suffixWays = allConstruct(suffix, wordBank);  // Recursive call
+      const targetWays = suffixWays.map(way => [word, ...way]); // Prepend word to each way
+      result.push(...targetWays); // Add all the ways to the result
+    }
+  }
+
+  return result;
+}
+
+console.log(allConstruct("purple", ["purp", "p", "ur", "le", "purpl"])); 
+// [ [ "purp", "le" ], [ "p", "ur", "p", "le" ] ]
+
+console.log(allConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd", "ef", "c"])); 
+// [ [ "ab", "cd", "ef" ], [ "ab", "c", "def" ], [ "abc", "def" ], [ "abcd", "ef" ] ]
+```
+
+### Brute force Complexity of allConstruct
+
+- **Time Complexity**: O( n <sup>m</sup> ) or O( n^m )
+- **Space Complexity**: O(m )
+
+### **Optimized with Memoization allConstruct**
+
+Since this is a problem that can have overlapping subproblems, we can optimize it using memoization. The memo object will store the result for each `target` string, avoiding recomputation for the same target.
+
+### **Memoized Implementation allConstruct**
+
+```javascript
+function allConstruct(target, wordBank, memo = {}) {
+  if (target in memo) return memo[target];  // Return cached result if present
+  if (target === '') return [[]];  // Base case: one way to construct the empty string
+
+  const result = [];
+
+  for (let word of wordBank) {
+    if (target.indexOf(word) === 0) {  // If the word is a prefix
+      const suffix = target.slice(word.length);
+      const suffixWays = allConstruct(suffix, wordBank, memo);  // Recursive call with memo
+      const targetWays = suffixWays.map(way => [word, ...way]);  // Prepend word to each way
+      result.push(...targetWays);  // Add all the ways to the result
+    }
+  }
+
+  memo[target] = result;  // Store result in memo
+  return result;
+}
+
+console.log(allConstruct("purple", ["purp", "p", "ur", "le", "purpl"])); 
+// [ [ "purp", "le" ], [ "p", "ur", "p", "le" ] ]
+
+console.log(allConstruct("abcdef", ["ab", "abc", "cd", "def", "abcd", "ef", "c"])); 
+// [ [ "ab", "cd", "ef" ], [ "ab", "c", "def" ], [ "abc", "def" ], [ "abcd", "ef" ] ]
+```
+
+### **Explanation allConstruct**
+
+- **Base Case**: When the target is an empty string, we return `[[]]`, which signifies that there's one valid way to construct the target using no words (the empty string itself).
+- **Recursive Call**: For each word in the `wordBank`, if it's a prefix of the target, we recursively find all ways to construct the remaining part of the target (after removing the prefix). We then prepend the current word to each of the valid ways returned by the recursive call.
+- **Memoization**: By storing previously computed results for a given target in the `memo` object, we avoid redundant calculations.
+
+### **Time and Space Complexity allConstruct**
+
+- **Time Complexity**: O(n^m) where `m` is the length of the target string and `n` is the number of words in the `wordBank`. This is the worst-case scenario, which is exponential because we are exploring all possible combinations.
+- **Space Complexity**: O(n^m) due to the recursive call stack and the storage required for the memo object and the result arrays.
+
+This solution provides all possible combinations for constructing the target string from the word bank, and memoization helps to optimize the performance by reducing redundant computations.
+
+### allConstruct diagram
+
+The diagram clearly shows the recursive breakdown of the `allConstruct(abcdef,[ab,abc,cd,def,abcd])` problem.
+
+```mermaid
+graph TD
+    targetSum[abcdef] --> |ab - ''|number1[cdef] 
+    targetSum --> |abc - 'abc,def'|number2[def]
+    targetSum --> |abcd - ''|number3[ef]:::ef
+    number1 --> |cd - ''|number13b[ef]:::ef
+    number2 --> |def - 'def'|number12['']
+    classDef ef stroke:#f00,fill:#f96
+```
+
+## fib
+
+- **fib tabulation**
+
 ## Videos
 
 * [Dynamic Programming - Learn to Solve Algorithmic Problems & Coding Challenges](https://www.youtube.com/watch?v=oBt53YbR9Kk)
