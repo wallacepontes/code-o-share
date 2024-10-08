@@ -1,15 +1,103 @@
-# Dynamic Programming - Learn to Solve Algorithmic Problems & Coding Challenges
+# Dynamic Programming
 
-## Table of Contents
+## Course Contents
 
-1. [Fibonacci](#fibonacci)
-2. [A Grid Traveler](#a-grid-traveler)
-3. [canSum](#cansum)
-4. [howSum](#howsum)
-5. [bestSum](#bestsum)
-6. [canConstruct](#canconstruct)
-7. [countConstruct](#countconstruct)
-8. [Videos](#videos)
+- [Dynamic Programming](#dynamic-programming)
+  - [Course Contents](#course-contents)
+  - [Introduction](#introduction)
+  - [Fibonacci](#fibonacci)
+    - [Fibonacci diagram](#fibonacci-diagram)
+    - [Explanation Fibonacci diagram](#explanation-fibonacci-diagram)
+    - [**Time Complexity: O(n)**](#time-complexity-on)
+    - [**Space Complexity: O(n)**](#space-complexity-on)
+  - [Memoization](#memoization)
+    - [Memoized Recursive Fibonacci Function](#memoized-recursive-fibonacci-function)
+    - [How it Works](#how-it-works)
+  - [JavaScript issues allocating memory](#javascript-issues-allocating-memory)
+    - [1. **Pre-allocate Memory for Arrays**](#1-pre-allocate-memory-for-arrays)
+      - [Example pre-allocating memory](#example-pre-allocating-memory)
+    - [2. **Iterative Approach with Constant Space**](#2-iterative-approach-with-constant-space)
+      - [Example fibonacci](#example-fibonacci)
+    - [3. **Typed Arrays**](#3-typed-arrays)
+      - [Example Using `Int32Array`](#example-using-int32array)
+    - [Summary of Improvements](#summary-of-improvements)
+  - [A Grid Traveler](#a-grid-traveler)
+    - [Problem Breakdown:](#problem-breakdown)
+    - [Memoized Recursive Solution](#memoized-recursive-solution)
+    - [Explanation Memoized Recursive Solution](#explanation-memoized-recursive-solution)
+    - [Time and Space Complexity](#time-and-space-complexity)
+    - [A grid traveler diagram](#a-grid-traveler-diagram)
+    - [**Memoization Recipe: Simplified**](#memoization-recipe-simplified)
+    - [**Memoization Recipe**](#memoization-recipe)
+    - [**Memoization Recipe Key Principles**](#memoization-recipe-key-principles)
+    - [**Tips and Recommendations**](#tips-and-recommendations)
+  - [canSum](#cansum)
+    - [**Breakdown of the Problem**](#breakdown-of-the-problem)
+    - [Recursive Function without Memoization](#recursive-function-without-memoization)
+    - [Brute force Complexity](#brute-force-complexity)
+    - [Optimized Solution with Memoization](#optimized-solution-with-memoization)
+    - [**Explanation canSum Memoized Implementation**](#explanation-cansum-memoized-implementation)
+    - [**Time and Space Complexity**](#time-and-space-complexity-1)
+    - [canSum diagram](#cansum-diagram)
+  - [howSum](#howsum)
+    - [**Recursive Approach (Without Memoization)**](#recursive-approach-without-memoization)
+    - [**Base Cases of howSum**](#base-cases-of-howsum)
+    - [**Recursive Implementation**](#recursive-implementation)
+    - [Brute force Complexity of howSum](#brute-force-complexity-of-howsum)
+    - [**Optimized with Memoization**](#optimized-with-memoization)
+    - [**Memoized Implementation**](#memoized-implementation)
+    - [**Explanation howSum Memoized Implementation**](#explanation-howsum-memoized-implementation)
+    - [**Memoization**](#memoization-1)
+    - [**Time and Space Complexity howSum**](#time-and-space-complexity-howsum)
+    - [howSum diagram](#howsum-diagram)
+  - [bestSum](#bestsum)
+    - [Key Idea](#key-idea)
+    - [**Recursive Approach (Without Memoization)**](#recursive-approach-without-memoization-1)
+    - [**Base Cases of bestSum**](#base-cases-of-bestsum)
+    - [**Recursive Implementation**:](#recursive-implementation-1)
+    - [Brute force Complexity of bestSum](#brute-force-complexity-of-bestsum)
+    - [**Optimized with Memoization of bestSum**](#optimized-with-memoization-of-bestsum)
+    - [**Memoized Implementation of bestSum**](#memoized-implementation-of-bestsum)
+    - [**Explanation of bestSum Memoized Implementation**](#explanation-of-bestsum-memoized-implementation)
+    - [**Time and Space Complexity of bestSum**](#time-and-space-complexity-of-bestsum)
+    - [bestSum diagram](#bestsum-diagram)
+  - [canConstruct](#canconstruct)
+    - [**Recursive Approach**](#recursive-approach)
+    - [**Base Case of canConstruct**](#base-case-of-canconstruct)
+    - [**Recursive Implementation (Without Memoization)**](#recursive-implementation-without-memoization)
+    - [Brute force Complexity of canConstruct](#brute-force-complexity-of-canconstruct)
+    - [**Optimized with Memoization of canConstruct**](#optimized-with-memoization-of-canconstruct)
+    - [**Memoized Implementation of canConstruct**](#memoized-implementation-of-canconstruct)
+    - [**Explanation of canConstruct**](#explanation-of-canconstruct)
+    - [**Time and Space Complexity of canConstruct**](#time-and-space-complexity-of-canconstruct)
+    - [canConstruct diagram](#canconstruct-diagram)
+  - [countConstruct](#countconstruct)
+    - [**Recursive Approach countConstruct**](#recursive-approach-countconstruct)
+    - [**Recursive Implementation (Without Memoization) countConstruct**](#recursive-implementation-without-memoization-countconstruct)
+    - [Brute force Complexity of countConstruct](#brute-force-complexity-of-countconstruct)
+    - [**Optimized with Memoization countConstruct**](#optimized-with-memoization-countconstruct)
+    - [**Memoized Implementation**:](#memoized-implementation-1)
+    - [**Explanation**](#explanation)
+    - [**Time and Space Complexity countConstruct**](#time-and-space-complexity-countconstruct)
+    - [countConstruct diagram](#countconstruct-diagram)
+  - [allConstruct](#allconstruct)
+    - [**Recursive Approach allConstruct**](#recursive-approach-allconstruct)
+    - [**Recursive Implementation (Without Memoization) allConstruct**](#recursive-implementation-without-memoization-allconstruct)
+    - [Brute force Complexity of allConstruct](#brute-force-complexity-of-allconstruct)
+    - [**Optimized with Memoization allConstruct**](#optimized-with-memoization-allconstruct)
+    - [**Memoized Implementation allConstruct**](#memoized-implementation-allconstruct)
+    - [**Explanation allConstruct**](#explanation-allconstruct)
+    - [**Time and Space Complexity allConstruct**](#time-and-space-complexity-allconstruct)
+    - [allConstruct diagram](#allconstruct-diagram)
+  - [fib](#fib)
+  - [Videos](#videos)
+  - [References](#references)
+
+---
+
+## Introduction
+
+Dynamic Programming - Learn to Solve Algorithmic Problems & Coding Challenges
 
 **[Download Node.js the way you want.](https://nodejs.org/en/download/package-manager)**
 
@@ -46,7 +134,52 @@ console.log(fibonacci(10)); // Output: 55
 
 This dynamic programming approach has a time complexity of O(n) and is much more efficient for larger values of `n`.
 
-### Memoization
+### Fibonacci diagram
+
+Here is a Fibonacci diagram of calculating `fibonacci(7)`:
+
+```mermaid
+graph TD
+    f71[(7)] --> f62[(6)]
+    f71 --> f52[(5)]
+    f62 --> f53[(5)]
+    f62 --> f43[(4)]
+    f53 --> f44[(4)]
+    f53 --> f34[(3)]
+    f44 --> f35[(3)]
+    f44 --> f25[(2)]
+    f35 --> f26[(2)]
+    f35 --> f16[(1)]
+```
+
+### Explanation Fibonacci diagram
+
+1. `fibonacci(3)` breaks into `fibonacci(2)` and `fibonacci(1)`.
+2. `fibonacci(2)` breaks into `fibonacci(1)` and `fibonacci(0)`.
+3. `fibonacci(1)` and `fibonacci(0)` return 1 and 0, respectively, while other `fibonacci(1)` also returns 1.
+
+This represents the recursive calls that happen during the calculation of `fibonacci(3)` with 7 interactions.
+
+Yes, you are correct! Here's the complexity breakdown of a **memoized Fibonacci** function:
+
+### **Time Complexity: O(n)**
+
+- In a memoized Fibonacci function, each value from `fibonacci(0)` to `fibonacci(n)` is calculated **once** and then stored in memory (i.e., memoized). 
+- The recursion only happens for new values that haven't been calculated yet. Once a value is computed, it's fetched directly from the memo, which takes constant time, `O(1)`.
+- Thus, there are `n` recursive calls, and each call does `O(1)` work after memoization is applied.
+- Overall, this results in a time complexity of **O(n)**.
+
+### **Space Complexity: O(n)**
+
+- The memoization technique requires storing the results of `fibonacci(0)` through `fibonacci(n)` in memory.
+- Since we're storing `n + 1` values in the memo object (or array), the space required is proportional to `n`, which results in **O(n)** space complexity.
+  
+In summary:
+
+- **Time Complexity**: `O(n)` (due to memoization and each Fibonacci value being calculated once).
+- **Space Complexity**: `O(n)` (due to storing all Fibonacci values up to `n` in memory).
+
+## Memoization
 
 Memoization is a great way to improve the efficiency of the recursive Fibonacci function by storing previously calculated values. This reduces redundant calculations, giving a time complexity of O(n) without the need for an iterative approach.
 
@@ -66,7 +199,7 @@ function fibonacci(n, memo = {}) {
 console.log(fibonacci(10)); // Output: 55
 ```
 
-### How it Works:
+### How it Works
 
 - We pass an object `memo` that stores the Fibonacci values already computed.
 - Before calculating the Fibonacci value of `n`, the function checks if it's already in `memo`. If it is, the stored value is returned, avoiding recalculation.
@@ -74,9 +207,9 @@ console.log(fibonacci(10)); // Output: 55
 
 This method retains the simplicity of the recursive approach while offering the performance benefits of dynamic programming by avoiding duplicate calculations.
 
-### JavaScript, arrays do not always allocate a fixed memory space
+## JavaScript issues allocating memory
 
-You're correct that in JavaScript, arrays do not always allocate a fixed memory space like in lower-level languages such as C or C++. Arrays are dynamically sized, and memory reallocation happens as they grow. This can cause performance issues, especially for large datasets or performance-critical applications, as memory allocation and resizing may occur frequently.
+JavaScript, arrays do not always allocate a fixed memory space like in lower-level languages such as C or C++. Arrays are dynamically sized, and memory reallocation happens as they grow. This can cause performance issues, especially for large datasets or performance-critical applications, as memory allocation and resizing may occur frequently.
 
 To mitigate these concerns and improve performance, you can consider the following strategies:
 
@@ -84,7 +217,7 @@ To mitigate these concerns and improve performance, you can consider the followi
 
 By pre-allocating a fixed size for arrays, you can avoid frequent memory reallocations and resizing during runtime.
 
-#### Example:
+#### Example pre-allocating memory
 
 ```javascript
 function fibonacci(n) {
@@ -161,51 +294,6 @@ Typed arrays ensure that each element is stored in a fixed number of bytes (e.g.
 - **Typed Arrays**: Use `TypedArray` for improved memory efficiency, especially when dealing with large data or numerical computations.
 
 These strategies can help improve the performance of JavaScript Fibonacci implementations, especially for large inputs or performance-critical scenarios.
-
-### Fibonacci diagram
-
-Here is a Fibonacci diagram of calculating `fibonacci(7)`:
-
-```mermaid
-graph TD
-    f71[(7)] --> f62[(6)]
-    f71 --> f52[(5)]
-    f62 --> f53[(5)]
-    f62 --> f43[(4)]
-    f53 --> f44[(4)]
-    f53 --> f34[(3)]
-    f44 --> f35[(3)]
-    f44 --> f25[(2)]
-    f35 --> f26[(2)]
-    f35 --> f16[(1)]
-```
-
-### Explanation Fibonacci diagram
-
-1. `fibonacci(3)` breaks into `fibonacci(2)` and `fibonacci(1)`.
-2. `fibonacci(2)` breaks into `fibonacci(1)` and `fibonacci(0)`.
-3. `fibonacci(1)` and `fibonacci(0)` return 1 and 0, respectively, while other `fibonacci(1)` also returns 1.
-
-This represents the recursive calls that happen during the calculation of `fibonacci(3)` with 7 interactions.
-
-Yes, you are correct! Here's the complexity breakdown of a **memoized Fibonacci** function:
-
-### **Time Complexity: O(n)**
-
-- In a memoized Fibonacci function, each value from `fibonacci(0)` to `fibonacci(n)` is calculated **once** and then stored in memory (i.e., memoized). 
-- The recursion only happens for new values that haven't been calculated yet. Once a value is computed, it's fetched directly from the memo, which takes constant time, `O(1)`.
-- Thus, there are `n` recursive calls, and each call does `O(1)` work after memoization is applied.
-- Overall, this results in a time complexity of **O(n)**.
-
-### **Space Complexity: O(n)**
-
-- The memoization technique requires storing the results of `fibonacci(0)` through `fibonacci(n)` in memory.
-- Since we're storing `n + 1` values in the memo object (or array), the space required is proportional to `n`, which results in **O(n)** space complexity.
-  
-In summary:
-
-- **Time Complexity**: `O(n)` (due to memoization and each Fibonacci value being calculated once).
-- **Space Complexity**: `O(n)` (due to storing all Fibonacci values up to `n` in memory).
 
 ## A Grid Traveler 
 
@@ -1085,8 +1173,16 @@ graph TD
 ## Videos
 
 * [Dynamic Programming - Learn to Solve Algorithmic Problems & Coding Challenges](https://www.youtube.com/watch?v=oBt53YbR9Kk)
-	> [<img src="https://img.youtube.com/vi/oBt53YbR9Kk/0.jpg" width="200">](https://www.youtube.com/watch?v=oBt53YbR9Kk "Dynamic Programming - Learn to Solve Algorithmic Problems & Coding Challenges by Bouali Ali 51,714 views 3 hours, 17 minutes")
+	> [<img src="https://img.youtube.com/vi/oBt53YbR9Kk/0.jpg" width="200">](https://www.youtube.com/watch?v=oBt53YbR9Kk "Learn how to use Dynamic Programming in this course for beginners. It can help you solve complex programming problems, such as those often seen in programming interview questions about data structures and algorithms. by freeCodeCamp.org 4.2M views 5 hours, 10 minutes")
+
+* [Big O Notation - Full Course](https://www.youtube.com/watch?v=Mo4vesaut8g)
+	> [<img src="https://img.youtube.com/vi/Mo4vesaut8g/0.jpg" width="200">](https://www.youtube.com/watch?v=Mo4vesaut8g "This course will teach you how to understand and apply the concepts of Big O Notation to Software Engineering. Big-O notation is a way to describe how long an algorithm takes to run or how much memory is used by an algorithm. by freeCodeCamp.org 553K views 1 hour, 56 minutes")
+
+* [Recursion in Programming - Full Course](https://www.youtube.com/watch?v=IJDJ0kBx2LM)
+	> [<img src="https://img.youtube.com/vi/IJDJ0kBx2LM/0.jpg" width="200">](https://www.youtube.com/watch?v=IJDJ0kBx2LM "Recursion is a powerful technique that helps us bridge the gap between complex problems being solved with elegant code. Within this course, we will break down what recursion is, why you would and wouldn’t want to use it and look at a variety of examples for how it can be used. by freeCodeCamp.org 947K views 1 hour, 51 minutes")
 
 ## References
 
 1. [Styling a mermaid](https://mermaid.js.org/syntax/flowchart.html#styling-and-classes)
+2. [Recursion in Programming](./Recursion.md)
+3. [Big O Notation](./Big-O-Notation.md)
